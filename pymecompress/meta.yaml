@@ -1,6 +1,6 @@
 package:
   name: pymecompress       # lower case name of package, may contain '-' but no spaces
-  version: 0.1.4    # version of package. Should use the PEP-386 verlib
+  version: {{ GIT_DESCRIBE_TAG }}    # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -13,7 +13,8 @@ source:
   # or from hg:
   #hg_url: https://code.google.com/p/python-microscopy/ 
   #hg_tag: 15.2.17
-  path: ../../pymecompress/pymecompress/
+  #path: ../../pymecompress/pymecompress/
+  git_url: https://github.com/python-microscopy/pymecompress.git
 
 build:
   # The build number should be incremented for new builds of the same version
