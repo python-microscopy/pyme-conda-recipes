@@ -3,6 +3,8 @@
 
 copy "%RECIPE_DIR%"\libpython27.a "%PREFIX%"\libs
 
+cd pymecompress
+
 "%PYTHON%" setup.py build --compiler=mingw32
 if errorlevel 1 exit /B 1
 
