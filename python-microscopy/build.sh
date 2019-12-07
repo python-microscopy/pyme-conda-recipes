@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "PYME"
+
 $PYTHON setup.py install
 #$PYTHON pymecompress/setup.py install
 
