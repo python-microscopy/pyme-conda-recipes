@@ -1,5 +1,7 @@
 :: "%PYTHON%" setup.py build_ext -c mingw32
 
+cd "PYME"
+
 if not exist "%PREFIX%\Menu" mkdir "%PREFIX%\Menu"
 copy "%RECIPE_DIR%\menu-windows.json" "%PREFIX%\Menu"
 copy "resources\icons\*.ico" "%PREFIX%\Menu"
