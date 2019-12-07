@@ -125,7 +125,7 @@ requirements:
   # in requirements" below).
   run:
     - python
-    - numpy {{ numpy }}
+    - numpy >={{ numpy }}
     - six
     
 
