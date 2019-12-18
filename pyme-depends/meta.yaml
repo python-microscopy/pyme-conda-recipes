@@ -137,6 +137,7 @@ requirements:
     - pyopengl
     - traits
     - traitsui
+    - pillow
 
     #FIXME for py3k
     - mayavi [py2k]
