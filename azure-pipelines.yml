@@ -3,8 +3,7 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
-trigger:
-- master
+trigger: none
 jobs:
 - job:
   displayName: 'ubuntu-latest'
@@ -34,6 +33,7 @@ jobs:
       pip install pytest pytest-azurepipelines pytest-cov
       pytest --cov pymecompress --cov-report html
     displayName: 'pytest'
+
 - job:
   displayName: macOS-10.13
   pool:
@@ -62,6 +62,7 @@ jobs:
       pip install pytest pytest-azurepipelines
       pytest
     displayName: 'pytest'
+
 - job:
   displayName: vs2017-win2016
   pool:
