@@ -1,0 +1,93 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger: none
+jobs:
+# - job:
+#   displayName: 'ubuntu-latest'
+#   pool:
+#     vmImage: 'ubuntu-latest'
+#   strategy:
+#     matrix:
+#       Python27:
+#         python.version: '2.7'
+#       #Python36:
+#       #  python.version: '3.6'
+#       #Python37:
+#       #  python.version: '3.7'
+
+#   steps:
+#   - task: UsePythonVersion@0
+#     inputs:
+#       versionSpec: '$(python.version)'
+#     displayName: 'Use Python $(python.version)'
+
+#   - bash: echo "##vso[task.prependpath]$CONDA/bin"
+#     displayName: Add conda to PATH
+
+#   - script: |
+#       conda config --add channels david_baddeley
+#       conda install conda-build
+#       conda build python-microscopy
+#     displayName: Conda build
+
+# - job:
+#   displayName: macOS-10.13
+#   pool:
+#     vmImage: 'macOS-10.13'
+#   strategy:
+#     matrix:
+#       Python27:
+#         python.version: '2.7'
+#       #Python36:
+#       #  python.version: '3.6'
+#       #Python37:
+#       #  python.version: '3.7'
+
+#   steps:
+#   - task: UsePythonVersion@0
+#     inputs:
+#       versionSpec: '$(python.version)'
+#     displayName: 'Use Python $(python.version)'
+
+#   - bash: echo "##vso[task.prependpath]$CONDA/bin"
+#     displayName: Add conda to PATH
+
+#   - script: |
+#       conda config --add channels david_baddeley
+#       conda install conda-build
+#       conda build python-microscopy
+#     displayName: Conda build
+
+- job:
+  displayName: vs2017-win2016
+  pool:
+    vmImage: 'vs2017-win2016'
+  strategy:
+    matrix:
+      Python27:
+        python.version: '2.7'
+      #Python36:
+      #  python.version: '3.6'
+      #Python37:
+      #  python.version: '3.7'
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+    displayName: 'Use Python $(python.version)'
+
+  - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
+    displayName: Add conda to PATH
+
+  - script: |
+      conda config --append channels anaconda
+      conda config --add channels david_baddeley
+      conda install conda-build
+      conda build python-microscopy
+    displayName: Conda build
+
+
