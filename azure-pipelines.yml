@@ -29,6 +29,7 @@ jobs:
 
   - script: |
       conda config --add channels david_baddeley
+      conda install conda-build
       conda build python-microscopy
     displayName: Conda build
 
@@ -56,6 +57,7 @@ jobs:
 
   - script: |
       conda config --add channels david_baddeley
+      conda install conda-build
       conda build python-microscopy
     displayName: Conda build
 
@@ -83,6 +85,7 @@ jobs:
 
   - script: |
       conda config --add channels david_baddeley
+      conda install conda-build
       conda build python-microscopy
     displayName: Conda build
 
