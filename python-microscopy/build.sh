@@ -2,7 +2,12 @@
 
 cd "PYME"
 
-$PYTHON setup.py install
+if [ -n "$OSX_ARCH" ]
+    then
+        $PREFIX/python.app/Contents/MacOS/python setup.py install
+else
+    $PYTHON setup.py install
+fi
 #$PYTHON pymecompress/setup.py install
 
 # Add more build steps here, if they are necessary.
@@ -14,7 +19,7 @@ echo $PREFIX
 
 if [ -n "$OSX_ARCH" ]
 	then
-		cd $RECIPE_DIR/../../osxLaunchers
+		cd ../osxLaunchers
 		xcodebuild -alltargets
 
 		cp -r ./build/Release/*.app $PREFIX

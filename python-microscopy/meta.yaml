@@ -53,6 +53,9 @@ build:
   # python in Mac OS X
   osx_is_app: yes # (defaults to no)
 
+  script_env:
+   - MSVC_PATH # [win]
+
 #  script_env:
 #    - GOPATH
 #    - GOBIN
@@ -136,6 +139,7 @@ requirements:
   build:
     - python {{ python}}
     - numpy {{ numpy }}
+    - python.app      [osx]
     - matplotlib
     - cython
     #- mingw  [win]
