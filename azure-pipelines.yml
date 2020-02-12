@@ -87,6 +87,7 @@ jobs:
       conda config --append channels anaconda
       conda config --add channels david_baddeley
       conda install conda-build
+      set MSCV_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build"
       conda build python-microscopy
     displayName: Conda build
 
