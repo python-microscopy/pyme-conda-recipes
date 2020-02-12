@@ -86,23 +86,8 @@ jobs:
     displayName: Add conda to PATH
 
   - script: |
-      conda create --yes --quiet --name myEnvironment
-      call activate myEnvironment
-      conda install --yes --quiet --name myEnvironment python=%PYTHON_VERSION% numpy=1.14 mingw cython six
-    displayName: Create Anaconda environment
-  # - script: |
-  #     python -m pip install --upgrade pip
-  #     pip install -r requirements.txt
-  #   displayName: 'Install dependencies'
+      conda config --add channels david_baddeley
+      conda build python-microscopy
+    displayName: Conda build
 
-  - script: |
-      call activate myEnvironment
-      python pymecompress/setup.py build_ext -i --compiler=mingw32
-    displayName: 'Build code'
-  - script: |
-      call activate myEnvironment
-      python setup.py develop
-      pip install pytest pytest-azurepipelines
-      pytest
-    displayName: 'pytest'
-© 2020 GitHub, Inc.
+
