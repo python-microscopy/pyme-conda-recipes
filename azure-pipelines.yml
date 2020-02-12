@@ -24,15 +24,13 @@ jobs:
       versionSpec: '$(python.version)'
     displayName: 'Use Python $(python.version)'
 
+  - bash: echo "##vso[task.prependpath]$CONDA/bin"
+    displayName: Add conda to PATH
+
   - script: |
-      python -m pip install --upgrade pip
-      pip install -r requirements.txt
-    displayName: 'Install dependencies'
-  - script: |
-      python setup.py develop
-      pip install pytest pytest-azurepipelines pytest-cov
-      pytest --cov pymecompress --cov-report html
-    displayName: 'pytest'
+      conda config --add channels david_baddeley
+      conda build python-microscopy
+    displayName: Conda build
 
 - job:
   displayName: macOS-10.13
@@ -53,15 +51,13 @@ jobs:
       versionSpec: '$(python.version)'
     displayName: 'Use Python $(python.version)'
 
+  - bash: echo "##vso[task.prependpath]$CONDA/bin"
+    displayName: Add conda to PATH
+
   - script: |
-      python -m pip install --upgrade pip
-      pip install -r requirements.txt
-    displayName: 'Install dependencies'
-  - script: |
-      python setup.py develop
-      pip install pytest pytest-azurepipelines
-      pytest
-    displayName: 'pytest'
+      conda config --add channels david_baddeley
+      conda build python-microscopy
+    displayName: Conda build
 
 - job:
   displayName: vs2017-win2016
