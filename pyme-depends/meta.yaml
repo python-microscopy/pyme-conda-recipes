@@ -170,6 +170,7 @@ requirements:
     - sphinx
     - ujson
     - jinja2
+    - django 1.11
     - dispatch
     - pycairo
     - pymecompress >=0.1.4
