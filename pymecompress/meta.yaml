@@ -118,7 +118,9 @@ requirements:
     - numpy {{ numpy }}
     #- matplotlib
     - cython
-    - mingw  [win]
+    #- mingw  [win]
+    - m2w64-toolchain [win]
+    - libpython [win]
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   # Package names should be any valid conda spec (see "Specifying versions
