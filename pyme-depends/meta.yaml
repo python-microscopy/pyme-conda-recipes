@@ -1,6 +1,6 @@
 package:
   name: pyme-depends       # lower case name of package, may contain '-' but no spaces
-  version: 1.07    # version of package. Should use the PEP-386 verlib
+  version: 1.08    # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -134,14 +134,17 @@ requirements:
     #<3.9 [py2k] #FIXME - there are still some issues with display logic on wx=4.x
     #- wxpython-phoenix < 3.9 [py3k]
     #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
-    - pytables <=3.4.2
+    - pytables # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl
     - traits
     - traitsui
     - pillow
 
     #FIXME for py3k
-    - mayavi [py2k]
+    # Mayavi is now optional as we have an effective replacement for isosurfaces (this leaves volume rendering, STL,
+    # and 3D PDF generation unmet, but these are pretty niche and we can probably let users do their own dependency
+    # wrangling for those cases)
+    # - mayavi [py2k]
 
     - toposort
     - networkx
