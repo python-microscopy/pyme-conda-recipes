@@ -128,15 +128,18 @@ requirements:
   run:
     - python {{ python }}
     - numpy >=1.11
+    - numpy >= 1.4 [py3k]
     - scipy
     - matplotlib
     - wxpython
     #<3.9 [py2k] #FIXME - there are still some issues with display logic on wx=4.x
     #- wxpython-phoenix < 3.9 [py3k]
     #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
+    - wxpython <= 4.0.4 [py3k]
     - pytables # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl
     - traits
+    - traits <= 5.1.1 [py3k]
     - traitsui
     - pillow
 
