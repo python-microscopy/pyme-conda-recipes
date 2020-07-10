@@ -127,7 +127,7 @@ requirements:
   # in requirements" below).
   run:
     - python {{ python }}
-    - numpy >= 1.4
+    - numpy >= 1.14
     - scipy
     - matplotlib
     - wxpython <= 4.0.4
