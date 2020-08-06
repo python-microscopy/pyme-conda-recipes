@@ -1,17 +1,17 @@
 package:
   name: toposort
-  version: "1.1"
+  version: "1.5"
 
 source:
-  fn: toposort-1.1.tar.gz
-  url: https://pypi.python.org/packages/source/t/toposort/toposort-1.1.tar.gz
-  md5: 87c0d8de376953997eb092ca150064d8
+  fn: toposort-1.5.tar.gz
+  url: https://pypi.python.org/packages/source/t/toposort/toposort-1.5.tar.gz
+  md5: 472cf86871d19b66d7cb18412c026959
 #  patches:
    # List any patch files here
    # - fix.patch
 
 build:
-  noarch_python: False
+  noarch: False
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
