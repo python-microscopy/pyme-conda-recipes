@@ -8,10 +8,40 @@ on:
 
 jobs:
 
-  conda_pkgs:
+  nix:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest] #windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest] #windows-latest, macos-latest]
+        python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: goanpeca/setup-miniconda@v1
+      with:
+        auto-update-conda: true
+        python-version: ${{ matrix.python }}
+#    - name: Conda info
+#      run: |
+#        conda info
+#        conda list
+    - name: Install dependencies
+      run: |
+        conda install conda-build anaconda-client
+    - name: Build and publish
+      env:
+        ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
+      run: |
+        export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
+        conda config --set anaconda_upload yes
+        conda build --skip-existing toposort pyfftw dispatch pymecompress mpld3 ifaddr zeroconf pyme-depends
+        conda build --skip-existing python-microscopy
+
+  win:
+    strategy:
+      matrix:
+        os: [windows-latest] #windows-latest, macos-latest]
         python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
@@ -31,9 +61,8 @@ jobs:
         conda install conda-build anaconda-client
     - name: Build and publish
       env:
-        ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
+        ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda config --set anaconda_upload yes
         conda build --skip-existing toposort pyfftw dispatch pymecompress mpld3 ifaddr zeroconf pyme-depends
         conda build --skip-existing python-microscopy
