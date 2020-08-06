@@ -31,14 +31,16 @@ jobs:
     - name: Install dependencies
       run: |
         conda install conda-build anaconda-client
+        mkdir ~/pkg_build
     - name: Build and publish
       env:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         #conda config --set anaconda_upload yes
-        conda build --skip-existing dispatch
-        ls -al ~/conda_pkgs_dir
+        conda build --output-folder ~/pkg_build --skip-existing dispatch
+        ls -al ~/pkg_build
+        anaconda upload ~/pkg_build/*
 
   win:
     strategy:
