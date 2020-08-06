@@ -137,7 +137,7 @@ requirements:
     #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
     - pytables # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl
-    - traits 
+    - traits # <=5.1.1
     - traitsui
     - pillow
 
