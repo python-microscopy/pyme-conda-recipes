@@ -128,7 +128,7 @@ requirements:
   run:
     - python {{ python }}
     - numpy >=1.14
-    - scipy <= 1.3 #to avoid FFTPack issues with pyfftw
+    - scipy <=1.3 #to avoid FFTPack issues with pyfftw
     - matplotlib
     #- wxpython <=4.0.4 #might be required to resolve traits issues
     - wxpython
