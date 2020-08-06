@@ -12,7 +12,8 @@ build:
 requirements:
   build:
     - python
-
+    - jinja2
+    - matplotlib
 
   run:
     - python
