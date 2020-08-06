@@ -36,8 +36,9 @@ jobs:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
-        conda config --set anaconda_upload yes
+        #conda config --set anaconda_upload yes
         conda build --skip-existing dispatch
+        ls -al ~/conda_pkgs_dir
 
   win:
     strategy:
