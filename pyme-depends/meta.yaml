@@ -127,10 +127,11 @@ requirements:
   # in requirements" below).
   run:
     - python {{ python }}
-    - numpy >=1.16
+    - numpy >=1.14
     - scipy
     - matplotlib
-    - wxpython >=4.0.4
+    #- wxpython <=4.0.4 #might be required to resolve traits issues
+    - wxpython
     #<3.9 [py2k] #FIXME - there are still some issues with display logic on wx=4.x
     #- wxpython-phoenix < 3.9 [py3k]
     #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
