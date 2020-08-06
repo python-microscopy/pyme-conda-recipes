@@ -31,10 +31,9 @@ jobs:
         conda install conda-build
     - name: Build and publish
       env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
+        export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
+        conda config --set anaconda_upload yes
         conda build --skip-existing toposort pyfftw dispatch pymecompress mpld3 ifaddr zeroconf pyme-depends
         conda build --skip-existing python-microscopy
-        #python setup.py bdist_wheel
-        #twine upload --skip-existing dist/*
