@@ -17,8 +17,9 @@ echo $OSX_ARCH
 echo $RECIPE_DIR
 echo $PREFIX
 
-if [ -n "$OSX_ARCH" ]
+if [ -n "$OSX_ARCH" ] && ["$PY3K" -eq "0"]
 	then
+		echo "Installing OSX Launchers"
 		cd ../osxLaunchers
 		xcodebuild -alltargets
 

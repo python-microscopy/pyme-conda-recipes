@@ -1,6 +1,6 @@
 package:
   name: pyme-depends       # lower case name of package, may contain '-' but no spaces
-  version: 1.08    # version of package. Should use the PEP-386 verlib
+  version: 1.09    # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -127,18 +127,17 @@ requirements:
   # in requirements" below).
   run:
     - python {{ python }}
-    
-    - numpy >= 1.14
+    - numpy >=1.14
     - scipy <= 1.3 #to avoid FFTPack issues with pyfftw
-
     - matplotlib
-    - wxpython <=4.0.4
+    #- wxpython <=4.0.4 #might be required to resolve traits issues
+    - wxpython
     #<3.9 [py2k] #FIXME - there are still some issues with display logic on wx=4.x
     #- wxpython-phoenix < 3.9 [py3k]
     #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
     - pytables # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl
-    - traits <=5.1.1
+    - traits # <=5.1.1
     - traitsui
     - pillow
 
@@ -160,7 +159,7 @@ requirements:
     - mpld3
     - python.app      [osx]
     - cherrypy
-    #- scikit-image
+    - scikit-image
     - scikit-learn
 
     #FIXME for py3k
@@ -224,3 +223,4 @@ about:
   # If own_environment is true, installing the app through the launcher
   # will install into its own environment. The default is false.
   #own_environment: true
+
