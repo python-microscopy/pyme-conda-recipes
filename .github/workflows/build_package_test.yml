@@ -13,7 +13,7 @@ jobs:
   nix:
     strategy:
       matrix:
-        os: [ubuntu-latest,] macos-latest] #windows-latest, macos-latest]
+        os: [ubuntu-latest,] #macos-latest] #windows-latest, macos-latest]
         python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
