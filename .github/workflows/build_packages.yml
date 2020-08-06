@@ -11,12 +11,13 @@ jobs:
   conda_pkgs:
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [ubuntu-latest, ] #windows-latest, macos-latest]
         python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
     steps:
+    - uses: actions/checkout@v2
     - uses: goanpeca/setup-miniconda@v1
       with:
         auto-update-conda: true
