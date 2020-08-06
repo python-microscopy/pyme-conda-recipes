@@ -3,7 +3,7 @@
 
 #just build a single, lightweight, dependency to troubleshoot
 
-name: Build Conda packages
+name: Build Conda packages [ test]
 
 on:
   workflow_dispatch:
