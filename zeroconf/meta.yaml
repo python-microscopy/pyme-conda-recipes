@@ -16,7 +16,7 @@ source:
    # - fix.patch
 
 build:
-  noarch_python: False
+  noarch: False
   preserve_egg_dir: False
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
