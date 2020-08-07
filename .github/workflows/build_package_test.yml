@@ -40,7 +40,7 @@ jobs:
         #conda config --set anaconda_upload yes
         conda build --output-folder ~/pkg_build --skip-existing dispatch
         ls -al ~/pkg_build
-        /usr/share/miniconda/envs/test/bin/anaconda upload ~/pkg_build/linux-64/*
+        python -m binstar_client.scripts.cli upload ~/pkg_build/linux-64/*
 
 #  win:
 #    strategy:
