@@ -32,6 +32,9 @@ jobs:
       run: |
         conda install conda-build anaconda-client
         mkdir ~/pkg_build
+        ls /usr/share/miniconda/condabin
+        ls /usr/share/miniconda/bin
+        ls /usr/share/miniconda/envs/test/bin
     - name: Build and publish
       env:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
