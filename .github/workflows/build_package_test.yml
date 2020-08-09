@@ -32,9 +32,9 @@ jobs:
       run: |
         conda install conda-build anaconda-client
         mkdir ~/pkg_build
-        ls -al /usr/share/miniconda/condabin
-        ls -al /usr/share/miniconda/bin
-        ls -al /usr/share/miniconda/envs/test/bin
+        #ls -al /usr/share/miniconda/condabin
+        #ls -al /usr/share/miniconda/bin
+        #ls -al /usr/share/miniconda/envs/test/bin
     - name: Build and publish
       env:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
@@ -43,7 +43,7 @@ jobs:
         #conda config --set anaconda_upload yes
         conda build --output-folder ~/pkg_build --skip-existing dispatch
         ls -al ~/pkg_build
-        python -m binstar_client.scripts.cli upload ~/pkg_build/linux-64/*
+        /usr/share/miniconda/bin/anaconda upload ~/pkg_build/linux-64/*
 
 #  win:
 #    strategy:
