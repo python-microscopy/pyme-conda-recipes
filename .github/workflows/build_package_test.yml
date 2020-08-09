@@ -43,7 +43,7 @@ jobs:
         #conda config --set anaconda_upload yes
         conda build --output-folder ~/pkg_build --skip-existing dispatch
         ls -al ~/pkg_build/linux-64
-        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley ~/pkg_build/linux-64/*.bz2
+        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley ~/pkg_build/linux-64/*.tar.bz2
 
 #  win:
 #    strategy:
