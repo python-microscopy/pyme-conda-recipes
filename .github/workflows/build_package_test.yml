@@ -42,8 +42,8 @@ jobs:
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         #conda config --set anaconda_upload yes
         conda build --output-folder ~/pkg_build --skip-existing dispatch
-        ls -al ~/pkg_build
-        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley ~/pkg_build/linux-64/*
+        ls -al ~/pkg_build/linux-64
+        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley ~/pkg_build/linux-64/*.bz2
 
 #  win:
 #    strategy:
