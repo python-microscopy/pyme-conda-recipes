@@ -104,4 +104,4 @@ jobs:
       run: |
         conda build --output-folder ~/pkg_build --skip-existing dispatch
         #ls -al ~/pkg_build/linux-64
-        C:\Miniconda\bin\anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/win-64/*.tar.bz2
+        C:\Miniconda\Scripts\anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/win-64/*.tar.bz2
