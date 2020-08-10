@@ -123,5 +123,7 @@ jobs:
         conda install constructor
         cd ./installers
         constructor .
-        forfiles /P . /M *.exe /C "curl -u \"${USERNAME}:${PASSWORD}\" -T @file https://python-microscopy.org:2078/"
+        $files = Get-ChildItem ./*.exe
+        foreach ($file in $files) {curl -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
+        #forfiles /P . /M *.exe /C "curl -u \"${USERNAME}:${PASSWORD}\" -T @file https://python-microscopy.org:2078/"
 
