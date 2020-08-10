@@ -116,7 +116,12 @@ jobs:
 
     - name: Installers
       shell: pwsh
+      env:
+        USERNAME: ${{ secrets.DOCS_USERNAME }}
+        PASSWORD: ${{ secrets.DOCS_PASSWORD }}
       run: |
         conda install constructor
         cd ./installers
         constructor .
+        curl -u "${USERNAME}:${PASSWORD}" -T *.exe https://python-microscopy.org:2078/
+
