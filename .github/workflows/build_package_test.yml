@@ -102,6 +102,10 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
+        #conda config --set anaconda_upload yes
         conda build --skip-existing dispatch
         #ls -al ~/pkg_build/linux-64
-        C:\Miniconda\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force ~/pkg_build/win-64/*.tar.bz2
+        ls C:\Miniconda\Scripts\
+        ls C:\Miniconda\bin\
+        ls C:\Miniconda\envs\test\Scripts
+        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.tar.bz2
