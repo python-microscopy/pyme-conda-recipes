@@ -123,5 +123,5 @@ jobs:
         conda install constructor
         cd ./installers
         constructor .
-        curl -u "${USERNAME}:${PASSWORD}" -T *.exe https://python-microscopy.org:2078/
+        forfiles /P . /M *.exe /C "curl -u \"${USERNAME}:${PASSWORD}\" -T @file https://python-microscopy.org:2078/"
 
