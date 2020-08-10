@@ -102,7 +102,6 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        #conda config --set anaconda_upload yes
         conda build --skip-existing dispatch
         #ls -al ~/pkg_build/linux-64
         ls C:\Miniconda\Scripts\
