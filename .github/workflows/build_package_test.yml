@@ -106,6 +106,6 @@ jobs:
         conda build --skip-existing dispatch
         #ls -al ~/pkg_build/linux-64
         ls C:\Miniconda\Scripts\
-        ls C:\Miniconda\bin\
+        #ls C:\Miniconda\bin\
         ls C:\Miniconda\envs\test\Scripts
         C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.tar.bz2
