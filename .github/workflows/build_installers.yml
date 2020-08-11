@@ -26,9 +26,14 @@ jobs:
       run: |
         conda info
         conda list
-    - name: Install dependencies
-      run: |
-        conda install conda-build constructor
     - name: Build and publish
+      shell: pwsh
+      env:
+        USERNAME: ${{ secrets.DOCS_USERNAME }}
+        PASSWORD: ${{ secrets.DOCS_PASSWORD }}
       run: |
-        constructor construct.yaml
+        conda install constructor
+        cd ./installers
+        constructor .
+        $files = Get-ChildItem ./*.exe
+        foreach ($file in $files) {echo "uploading $file ..."; curl.exe -v -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
