@@ -140,6 +140,8 @@ requirements:
     - python {{ python}}
     - numpy {{ numpy }}
     - python.app      [osx]
+    - {{ compiler('c') }} [osx]
+    - {{ compiler('c++') }} [osx]
     - matplotlib
     - cython
     #- mingw  [win]
