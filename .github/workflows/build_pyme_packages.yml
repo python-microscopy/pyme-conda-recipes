@@ -124,6 +124,6 @@ jobs:
         cd ./installers
         constructor .
         $files = Get-ChildItem ./*.exe
-        foreach ($file in $files) {curl -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
+        foreach ($file in $files) {echo "uploading $file ..."; curl.exe -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
         #forfiles /P . /M *.exe /C "curl -u \"${USERNAME}:${PASSWORD}\" -T @file https://python-microscopy.org:2078/"
 
