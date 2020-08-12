@@ -29,12 +29,12 @@ jobs:
     - name: Build and publish
       shell: pwsh
       env:
-        USERNAME: ${{ secrets.DOCS_USERNAME }}
-        PASSWORD: ${{ secrets.DOCS_PASSWORD }}
+        D_USERNAME: ${{ secrets.DOCS_USERNAME }}
+        D_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
       run: |
         conda install constructor
         cd ./installers
         constructor .
-        echo $USERNAME
+        echo $D_USERNAME
         $files = Get-ChildItem ./*.exe
-        foreach ($file in $files) {echo "uploading $file ..."; curl.exe -v -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
+        foreach ($file in $files) {echo "uploading $file ..."; curl.exe -v -u "${D_USERNAME}:${D_PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
