@@ -27,7 +27,7 @@ jobs:
         conda info
         conda list
     - name: Build and publish
-      shell: pwsh
+      #shell: pwsh
       env:
         D_USERNAME: ${{ secrets.DOCS_USERNAME }}
         D_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
