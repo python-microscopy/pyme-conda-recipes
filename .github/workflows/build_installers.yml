@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  conda_pkgs:
+  win:
     strategy:
       matrix:
         os: [windows-latest, ] # macos-latest], ubuntu-latest]
