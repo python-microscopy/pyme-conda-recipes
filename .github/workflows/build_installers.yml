@@ -26,15 +26,17 @@ jobs:
       run: |
         conda info
         conda list
-    - name: Build and publish
-      #shell: pwsh
-      env:
-        D_USERNAME: ${{ secrets.DOCS_USERNAME }}
-        D_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
+    - name: Build
       run: |
         conda install constructor
         cd ./installers
         constructor .
+
+    - name: Upload
+      env:
+        D_USERNAME: ${{ secrets.DOCS_USERNAME }}
+        D_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
+      run: |
         echo "USERNAME: ${D_USERNAME}"
-        $files = Get-ChildItem ./*.exe
+        $files = Get-ChildItem ./installers/*.exe
         foreach ($file in $files) {echo "uploading $file ..."; curl.exe -v -u "${D_USERNAME}:${D_PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
