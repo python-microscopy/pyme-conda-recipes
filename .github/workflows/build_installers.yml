@@ -35,5 +35,6 @@ jobs:
         conda install constructor
         cd ./installers
         constructor .
+        echo $USERNAME
         $files = Get-ChildItem ./*.exe
         foreach ($file in $files) {echo "uploading $file ..."; curl.exe -v -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
