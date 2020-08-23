@@ -44,3 +44,39 @@ jobs:
             curl.exe -v -u "${env:D_USERNAME}:${env:D_PASSWORD}" -T $file https://python-microscopy.org:2078/
             }
 
+  osx:
+    strategy:
+      matrix:
+        os: [macos-latest], ubuntu-latest]
+        python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: goanpeca/setup-miniconda@v1
+      with:
+        auto-update-conda: true
+        python-version: ${{ matrix.python }}
+    - name: Conda info
+      run: |
+        conda info
+        conda list
+    - name: Build
+      run: |
+        conda install constructor
+        cd ./installers
+        constructor .
+
+    - name: Upload
+      shell: pwsh # not sure this will work on OSX
+      env:
+        D_USERNAME: ${{ secrets.DOCS_USERNAME }}
+        D_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
+      run: |
+        echo "USERNAME: $env:D_USERNAME"
+        $files = Get-ChildItem ./installers/*.pkg
+        foreach ($file in $files) {
+            echo "uploading $file ...";
+            curl.exe -v -u "${env:D_USERNAME}:${env:D_PASSWORD}" -T $file https://python-microscopy.org:2078/
+            }
