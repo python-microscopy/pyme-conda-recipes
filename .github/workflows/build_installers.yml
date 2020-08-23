@@ -47,7 +47,7 @@ jobs:
   osx:
     strategy:
       matrix:
-        os: [macos-latest], ubuntu-latest]
+        os: [macos-latest,]
         python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
