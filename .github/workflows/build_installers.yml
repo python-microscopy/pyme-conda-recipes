@@ -79,5 +79,5 @@ jobs:
         $files = Get-ChildItem ./installers/*.pkg
         foreach ($file in $files) {
             echo "uploading $file ...";
-            curl.exe -v -u "${env:D_USERNAME}:${env:D_PASSWORD}" -T $file https://python-microscopy.org:2078/
+            /usr/bin/curl -v -u "${env:D_USERNAME}:${env:D_PASSWORD}" -T $file https://python-microscopy.org:2078/
             }
