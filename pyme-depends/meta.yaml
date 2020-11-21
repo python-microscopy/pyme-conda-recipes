@@ -1,6 +1,6 @@
 package:
   name: pyme-depends       # lower case name of package, may contain '-' but no spaces
-  version: 1.11    # version of package. Should use the PEP-386 verlib
+  version: 1.12    # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -182,6 +182,7 @@ requirements:
     - future
     - pywin32 [win]
     - cython
+    - blosc <= 1.19 #workaround for bug in pytables packages which fail for blosc >=1.20
 
   #unfortunately not availible through conda on windows ##FIXME
 

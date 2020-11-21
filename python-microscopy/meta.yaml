@@ -152,7 +152,7 @@ requirements:
   run:
      - python {{ python }}
      - numpy >={{ numpy }}
-     - pyme-depends
+     - pyme-depends >= 1.12
 #    - python {{ python }}
 #    - numpy {{ numpy }}
 #    - scipy
