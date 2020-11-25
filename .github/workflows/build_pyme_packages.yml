@@ -14,13 +14,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest] #windows-latest, macos-latest]
-        python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.6', '3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
-    - uses: goanpeca/setup-miniconda@v1
+    - uses: conda-incubator/setup-miniconda@v2
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
@@ -47,13 +47,13 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
-        python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.6', '3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
-    - uses: goanpeca/setup-miniconda@v1
+    - uses: conda-incubator/setup-miniconda@v2
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
@@ -80,13 +80,13 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest] #windows-latest, macos-latest]
-        python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.6', '3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
-    - uses: goanpeca/setup-miniconda@v1
+    - uses: conda-incubator/setup-miniconda@v2
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
