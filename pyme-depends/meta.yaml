@@ -182,7 +182,7 @@ requirements:
     - future
     - pywin32 [win]
     - cython
-    - blosc <= 1.19 #workaround for bug in pytables packages which fail for blosc >=1.20
+    - blosc <=1.19 #workaround for bug in pytables packages which fail for blosc >=1.20
 
   #unfortunately not availible through conda on windows ##FIXME
 
