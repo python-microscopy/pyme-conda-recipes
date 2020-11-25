@@ -1,6 +1,6 @@
 # name and version (required)
 name: python-microscopy
-version: 20.09.18
+version: 20.11.25
 
 # channels to pull packages from
 channels: &id1
