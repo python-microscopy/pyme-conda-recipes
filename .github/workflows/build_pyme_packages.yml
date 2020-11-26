@@ -38,7 +38,7 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build --output-folder ~/pkg_build python-microscopy
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends python-microscopy
         #ls -al ~/pkg_build/linux-64
         /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
 
@@ -71,7 +71,7 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build --output-folder ~/pkg_build python-microscopy
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends python-microscopy
         #ls -al ~/pkg_build/linux-64
         /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
 
@@ -107,7 +107,7 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build python-microscopy
+        conda build --skip-existing -c david_baddeley pyme-depends python-microscopy
         #ls -al ~/pkg_build/linux-64
         ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
