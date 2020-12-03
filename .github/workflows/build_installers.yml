@@ -30,6 +30,10 @@ jobs:
       run: |
         conda install constructor
         cd ./installers
+
+        $Env:PYME_RELEASE=python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])"
+
+        echo "PYME_RELEASE: $PYME_RELEASE"
         constructor .
 
     - name: Upload
@@ -64,9 +68,13 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda install constructor
+        conda install constructor requests
         cd ./installers
         ls /usr/local/miniconda/bin
+
+        export PYME_RELEASE=$(python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])")
+        echo "PYME_RELEASE: $PYME_RELEASE"
+
         /usr/local/miniconda/bin/constructor .
 
     - name: Upload

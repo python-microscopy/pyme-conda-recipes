@@ -1,6 +1,6 @@
 # name and version (required)
 name: python-microscopy
-version: 20.11.25
+version: {{ environ['PYME_RELEASE'] }}
 
 # channels to pull packages from
 channels: &id1
@@ -12,7 +12,7 @@ channels: &id1
 # specifications
 specs:
   - python=3.6.*
-  - python-microscopy
+  - python-microscopy={{ environ['PYME_RELEASE'] }}
   - conda
   #- wxpython <3.9
   - numpy=1.14.*
