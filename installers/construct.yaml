@@ -1,6 +1,6 @@
 # name and version (required)
 name: python-microscopy
-version: {{ environ['PYME_RELEASE'] }}
+version: {{ os.environ['PYME_RELEASE'] }}
 
 # channels to pull packages from
 channels: &id1
