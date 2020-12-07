@@ -33,7 +33,7 @@ jobs:
 
         $Env:PYME_RELEASE=python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])"
 
-        echo "PYME_RELEASE: $PYME_RELEASE"
+        echo "PYME_RELEASE: $Env:PYME_RELEASE"
         constructor .
 
     - name: Upload
@@ -72,7 +72,7 @@ jobs:
         cd ./installers
         ls /usr/local/miniconda/bin
 
-        export PYME_RELEASE=$(python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])")
+        export PYME_RELEASE=$(/usr/local/miniconda/bin/python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])")
         echo "PYME_RELEASE: $PYME_RELEASE"
 
         /usr/local/miniconda/bin/constructor .
