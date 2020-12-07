@@ -4,6 +4,7 @@ cd "PYME"
 
 if [ -n "$OSX_ARCH" ]
     then
+        $PYTHON setup.py build
         $PREFIX/python.app/Contents/MacOS/python setup.py install
 else
     $PYTHON setup.py install

@@ -28,7 +28,7 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda install constructor
+        conda install constructor requests jinja2
         cd ./installers
 
         $Env:PYME_RELEASE=python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])"
@@ -68,7 +68,7 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda install constructor requests
+        conda install constructor requests jinja2
         cd ./installers
         ls /usr/local/miniconda/bin
 
