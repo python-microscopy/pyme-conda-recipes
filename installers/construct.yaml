@@ -4,8 +4,8 @@ version: {{ os.environ['PYME_RELEASE'] }}
 
 # channels to pull packages from
 channels: &id1
-  - https://repo.anaconda.com/pkgs/main/
-  - https://repo.anaconda.com/pkgs/free/
+  - https://repo.anaconda.com/pkgs/main
+  #- https://repo.anaconda.com/pkgs/free
   - https://conda.anaconda.org/david_baddeley
   - https://repo.anaconda.com/pkgs/msys2
 
