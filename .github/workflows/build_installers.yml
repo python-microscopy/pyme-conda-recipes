@@ -6,6 +6,12 @@ name: Build Installers
 on:
   workflow_dispatch:
 
+  workflow_run:
+    workflows: ["Build PYME packages"]
+    branches: [main]
+    types:
+      - completed
+
 jobs:
 
   win:
