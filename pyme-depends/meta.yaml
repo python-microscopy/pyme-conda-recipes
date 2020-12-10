@@ -166,7 +166,7 @@ requirements:
     - shapely [osx and py2k]
 
     - zeroconf 0.17.7 [py2k]
-    - zeroconf [py3k] #this might be too permissive
+    - zeroconf <=0.26.3 [py3k]
     - requests
     - pandas
     - pyyaml
