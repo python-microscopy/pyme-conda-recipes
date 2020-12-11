@@ -1,11 +1,11 @@
 package:
   name: python-bioformats
-  version: "1.0.5"
+  version: "4.0.0"
 
 source:
-  fn: python-bioformats-1.0.5.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-bioformats/python-bioformats-1.0.5.tar.gz
-  md5: dea824f62e937e8d253627d9c1835143
+  fn: python-bioformats-4.0.0.tar.gz
+  url: https://files.pythonhosted.org/packages/e2/35/c1d5b33e275c0545083b8cb38213d78f85269a8a3e1859b6b36639e75693/python-bioformats-4.0.0.tar.gz
+  md5: 5470817c3033223b5c5471bbed908bd2
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -26,19 +26,25 @@ source:
   # number. If you do not include this key, it defaults to 0.
   # number: 1
 
-requirements:
+requirements:  # there are many more requirements (boto3, botocore, future jmespath, numpy, python-dateutil, python-javabridge, s3transfer, six, urllib3) but we bank on python-bioformats pulling these for us
   build:
     - python
     - setuptools
-    - javabridge >=1.0
+    - boto3 >=1.14.23
+    - future >=0.18.2
+    - python-javabridge 4.0.0
 
   run:
     - python
-    - javabridge >=1.0
+    - openjdk
+    - boto3 >=1.14.23
+    - future >=0.18.2
+    - python-javabridge 4.0.0
 
 test:
-  # Python imports
+  # Python imports, fine to import javabridge and bioformats w/o the python- in front
   imports:
+    - javabridge
     - bioformats
 
   # commands:

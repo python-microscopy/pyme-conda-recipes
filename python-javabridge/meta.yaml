@@ -1,0 +1,47 @@
+package:
+  name: python-javabridge
+  version: "4.0.0"
+
+source:
+  fn: python-javabridge-4.0.0.tar.gz
+  url: https://files.pythonhosted.org/packages/58/5c/bfcc52002c9dfe5fe3bd067783243ab0130f59f757b0517f62f1ba7e88ea/python-javabridge-4.0.0.tar.gz
+  md5: d2cb87302155901c370bc3fa6e58edd2
+
+requirements:  # there are many more requirements (boto3, botocore, future jmespath, numpy, python-dateutil, python-javabridge, s3transfer, six, urllib3) but we bank on python-bioformats pulling these for us
+  build:
+    - python
+    - setuptools
+    - cython
+    - numpy
+    - openjdk
+
+  run:
+    - python
+    - numpy
+    - openjdk
+
+test:
+  # Python imports, fine to import javabridge and bioformats w/o the python- in front
+  imports:
+    - javabridge
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/LeeKamentsky/python-javabridge/
+  license: BSD
+  summary: 'Running and interacting with the JVM from Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
