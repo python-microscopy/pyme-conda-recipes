@@ -7,7 +7,7 @@ source:
   url: https://files.pythonhosted.org/packages/58/5c/bfcc52002c9dfe5fe3bd067783243ab0130f59f757b0517f62f1ba7e88ea/python-javabridge-4.0.0.tar.gz
   md5: d2cb87302155901c370bc3fa6e58edd2
 
-requirements:  # there are many more requirements (boto3, botocore, future jmespath, numpy, python-dateutil, python-javabridge, s3transfer, six, urllib3) but we bank on python-bioformats pulling these for us
+requirements:
   build:
     - python
     - setuptools
