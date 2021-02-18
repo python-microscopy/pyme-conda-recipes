@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -n "$OSX_ARCH" ]
+    then
+        export CFLAGS='-Wno-implicit-function-declaration'
+fi
+
 $PYTHON setup.py install
 # Add more build steps here, if they are necessary.
 
