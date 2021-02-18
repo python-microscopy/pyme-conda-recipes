@@ -1,0 +1,355 @@
+package:
+  name: pyme-depends       # lower case name of package, may contain '-' but no spaces
+  version: 1.13       # version of package. Should use the PEP-386 verlib
+                      # conventions. Note that YAML will interpret
+                      # versions like 1.0 as floats, meaning that 1.0 will
+                      # be the same as 1. To avoid this, always put the
+                      # version in quotes, so that it will be interpreted
+                      # as a string.
+
+                      # The version cannot contain a dash '-' character.
+
+source:
+  # or from hg:
+  #hg_url: https://code.google.com/p/python-microscopy/ 
+  #hg_tag: 15.2.17
+  #path: ./PYME/
+
+build:
+  # The build number should be incremented for new builds of the same version
+  number: 0       # (defaults to 0)
+  #string: abc     # (defaults to default conda build string plus the build
+                  # number)
+                  # The build string cannot contain a dash '-' character
+
+  # Optional Python entry points
+  #entry_points:
+    # This creates an entry point named bsdiff4 that calls
+    # bsdiff4.cli.main_bsdiff4()
+
+
+
+
+    #- bspatch4 = bsdiff4.cli:main_bspatch4
+
+  # If osx_is_app is set, entry points will use python.app instead of
+  # python in Mac OS X
+  #osx_is_app: yes # (defaults to no)
+
+#  script_env:
+#    - GOPATH
+#    - GOBIN
+
+  # See the Features section below for more information on features
+
+  # Defines what features a package has
+  #features:
+  #  - feature1
+
+  # Indicates that installing this package should enable (track) the given
+  # features. It is generally a good idea to use a separate metapackage to
+  # track a feature, which does not have the feature. See the Features
+  # section below for more information about features.
+  #track_features:
+  #  - feature2
+
+  # Preserve the Python egg directory. This is needed for some packages
+  # that use setuptools specific features.
+  #preserve_egg_dir: yes # (default no)
+
+  # A list of globs for files that should not be linked (soft or
+  # hard). They will always be copied.
+  #no_link:
+  #  - bin/*.py # Don't link any .py files in bin/
+
+  # Used instead of build.sh or bld.bat. For short build scripts, this can
+  # be more convenient. You may need to use selectors (see below) to use
+  # different scripts for different platforms.
+  #script: python setup.py install
+
+  # Set which RPATHs are used when making executables relocatable. This
+  # currently only works on Linux.  The default is lib/
+  #rpaths:
+  #  - lib/
+  #  - lib/R/lib/
+
+  # Force files to always be included, even if they are already in the
+  # environment from the build dependencies. This is needed, for instance,
+  # to create a recipe for conda itself.
+  #always_include_files:
+  #  - bin/file1
+  #  - bin/file2
+
+  #########################################################################
+  # binary_relocation, has_prefix_files, binary_has_prefix_files, and     #
+  # detect_binary_files_with_prefix may be required to relocate files     #
+  # from the build environment to the installation environment.  See      #
+  # "Making Packages Relocatable" below.                                  #
+  #########################################################################
+
+  # Whether binary files should be made relocatable using install_name_tool
+  # on OS X or patchelf on Linux.
+  binary_relocation: true # (defaults to true)
+
+  # Binary files may contain the build prefix and need it replaced with the
+  # install prefix at installation time.  Conda can automatically identify
+  # and register such files:
+  detect_binary_files_with_prefix: true # (defaults to false)
+  # or you may elect to specify such files individually:
+  #binary_has_prefix_files:
+  #  - bin/binaryfile1
+  #  - lib/binaryfile2
+
+  # Text files (containing no NULL bytes) may contain the build prefix and
+  # need it replaced with the install prefix at installation time.  Conda
+  # will automatically register such files.  Binary files that contain the
+  # build prefix are generally handled differently (see
+  # binary_has_prefix_files or detect_binary_files_with_prefix), but there
+  # may be cases where such a binary file needs to be treated as an
+  # ordinary text file, in which case they need to be identified:
+  #has_prefix_files:
+  #  - bin/file1
+  #  - lib/file2
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+   - python {{ python }}
+    #- numpy
+  #  - matplotlib
+    #- mingw  [win]
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  # Package names should be any valid conda spec (see "Specifying versions
+  # in requirements" below).
+  run:
+    - python {{ python }}
+    - numpy ==1.14.6
+    - scipy ==1.3.0 #to avoid FFTPack issues with pyfftw
+    - matplotlib==3.2.2
+    #- wxpython <=4.0.4 #might be required to resolve traits issues
+    - wxpython==4.0.4
+    #<3.9 [py2k] #FIXME - there are still some issues with display logic on wx=4.x
+    #- wxpython-phoenix < 3.9 [py3k]
+    #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
+    - pytables ==3.6.1 # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
+    - pyopengl ==3.1.1a1
+    - traits ==6.1.1 # <=5.1.1
+    - traitsui ==7.1.0
+    - pillow ==8.0.1
+
+    #FIXME for py3k
+    # Mayavi is now optional as we have an effective replacement for isosurfaces (this leaves volume rendering, STL,
+    # and 3D PDF generation unmet, but these are pretty niche and we can probably let users do their own dependency
+    # wrangling for those cases)
+    # - mayavi [py2k]
+
+    - toposort ==1.5
+    - networkx ==2.5
+
+    #FIXME for py3k
+    # - pyro [py2k]
+
+    # - pyfftw3 [py2k]
+    - pyfftw ==0.11.1 #[py3k]
+
+    - mpld3 ==0.5.1
+    - python.app ==2     [osx]
+    - cherrypy ==18.6.0
+    - scikit-image ==0.16.2
+    - scikit-learn ==0.23.2
+
+    #FIXME for py3k
+    # - shapely [osx and py2k]
+
+    # - zeroconf 0.17.7 [py2k]
+    - zeroconf ==0.24.0 [win] #[py3k]
+    - zeroconf ==0.26.3 [osx]
+    - requests ==2.25.0
+    - pandas ==1.0.5 
+    - pyyaml ==5.3.1
+    - psutil ==5.7.2
+    - docutils ==0.16
+    - sphinx ==3.2.1
+    - ujson ==4.0.1
+    - jinja2 ==2.11.2
+    # - dispatch [py2k]
+    - pycairo ==1.19.1
+    - pymecompress ==0.2.0
+    - six ==1.15.0
+    - future ==0.18.2
+    - pywin32 ==227 [win]
+    - cython ==0.29.21
+    - blosc ==1.19.0 #workaround for bug in pytables packages which fail for blosc >=1.20
+
+    # Additional pins for packages not included in pyme-depends
+    - pyface ==7.1.0
+    - alabaster ==0.7.12
+    - babel ==2.9.0
+    - backports ==1.0
+    - backports.lzma ==0.014
+    - blas ==1.0
+    - brotlipy ==0.7.0
+    - bzip2 ==1.0.8
+    - ca-certificates ==2020.12.8
+    - cairo ==1.14.12
+    - certifi ==2020.12.5
+    - cffi ==1.14.4
+    - chardet ==3.0.4
+    - cheroot ==8.5.0
+    - cloudpickle ==1.6.0
+    - conda ==4.9.2  # do we need this?
+    - conda-package-handling ==1.7.2  # do we need this?
+    - cryptography ==3.3.1
+    - cycler ==0.10.0
+    - cytoolz ==0.11.0
+    - dask-core ==2.30.0
+    - dbus ==1.13.8 [osx]
+    - decorator ==4.4.2
+    - expat ==2.2.10 [osx]
+    - fftw ==3.3.8
+    - fontconfig ==2.13.0 [osx]
+    - freetype ==2.10.4
+    - gettext ==0.19.8.1 [osx]
+    - glib ==2.66.1 [osx]
+    - hdf5 ==1.10.4
+    - icc_rt ==2019.0.0 [win]
+    - icu ==58.2
+    - idna ==2.10
+    - ifaddr ==0.1.6
+    - imageio ==2.9.0
+    - imagesize ==1.2.0
+    - importlib-metadata ==2.0.0
+    - importlib_metadata ==2.0.0
+    - importlib_resources ==3.3.0
+    - intel-openmp ==2020.2 [win] # hardware-specific? definitely linked to mkl
+    - intel-openmp ==2019.4 [osx] # hardware-specific? definitely linked to mkl
+    - jaraco.classes ==3.1.0  # do we need this?
+    - jaraco.collections ==3.0.0  # do we need this?
+    - jaraco.functools ==3.0.1  # do we need this?
+    - jaraco.text ==3.2.0  # do we need this?
+    - joblib ==0.17.0
+    - jpeg ==9b
+    - kiwisolver ==1.3.0
+    - lcms2 ==2.11 [osx]
+    - libcxx ==10.0.0 [osx]
+    - libedit ==3.1.20191231 [osx]
+    - libffi ==3.3 [osx]
+    - libgfortran ==3.0.1 [osx]
+    - libiconv ==1.16 [osx]
+    - libpng ==1.6.37
+    - libtiff ==4.1.0
+    - libxml2 ==2.9.10 [osx]
+    - llvm-openmp == 10.0.0 [osx]
+    - lz4-c ==1.9.2
+    - lzo ==2.10
+    - markupsafe ==1.1.1
+    - matplotlib-base ==3.2.2  # do we need this?
+    - menuinst ==1.14.6
+    - mkl ==2020.2
+    - mkl ==2019.4 [osx]
+    - mkl-service ==2.3.0
+    - mkl_fft ==1.2.0
+    - mkl_random ==1.1.1
+    - mock ==4.0.3
+    - more-itertools ==8.6.0
+    - ncurses ==6.2 [osx]
+    - numexpr ==2.7.1
+    - numpy-base ==1.14.6  # do we need this?
+    - olefile ==0.46
+    - openssl ==1.1.1i
+    - packaging ==20.7
+    - pip ==20.3.1  # do we need this?
+    - pcre ==8.44 [osx]
+    - pixman ==0.40.0
+    - portend ==2.7.0
+    - pycosat ==0.6.3
+    - pycparser ==2.20
+    - pygments ==2.7.3
+    - pyopenssl ==20.0.0
+    - pyparsing ==2.4.7
+    - pyqt ==5.9.2
+    - pysocks ==1.7.1
+    - python-dateutil ==2.8.1
+    - pytz ==2020.4
+    - pywavelets ==1.1.1
+    - qt ==5.9.7
+    - readline ==8.0
+    - repoze.lru ==0.7
+    - routes ==2.5.1
+    - ruamel_yaml ==0.15.87
+    - setuptools ==51.0.0
+    - simplejson ==3.17.2
+    - sip ==4.19.8
+    - snappy ==1.1.8
+    - snowballstemmer ==2.0.0
+    - sphinxcontrib-applehelp ==1.0.2  # do we need this?
+    - sphinxcontrib-devhelp ==1.0.2  # do we need this?
+    - sphinxcontrib-htmlhelp ==1.0.3  # do we need this?
+    - sphinxcontrib-jsmath ==1.0.1  # do we need this?
+    - sphinxcontrib-qthelp ==1.0.3  # do we need this?
+    - sphinxcontrib-serializinghtml ==1.1.4  # do we need this?
+    - sqlite ==3.33.0
+    - tempora ==4.0.1
+    - threadpoolctl ==2.1.0
+    - tk ==8.6.10
+    - toolz ==0.11.1
+    - tornado ==6.1
+    - tqdm ==4.54.1
+    - urllib3 ==1.25.11
+    - vc ==14.2 [win]
+    - vs2015_runtime ==14.27.29016 [win]
+    - wheel ==0.36.1
+    - win_inet_pton ==1.1.0 [win]
+    - wincertstore ==0.2 [win]
+    - xz ==5.2.5
+    - yaml ==0.2.5
+    - zc.lockfile ==2.0
+    - zipp ==3.4.0
+    - zlib ==1.2.11
+    - zstd ==1.4.5
+
+  #unfortunately not availible through conda on windows ##FIXME
+
+#test:
+  # files which are copied from the recipe into the (temporary) test
+  # directory which are needed during testing
+  #files:
+  #  - test-data.txt
+  # in addition to the run-time requirements, you can specify requirements
+  # needed during testing. The run time requirements specified above are
+  # included automatically.
+  #requires:
+  #  - nose
+  # commands we want to make sure they work, which are expected to get
+  # installed by the package
+  #commands:
+  #  - bsdiff4 -h
+  #  - bspatch4 -h
+  # Python imports
+  #imports:
+  #  - bsdiff4
+
+  # The script run_test.py will be run automatically if it is part of the
+  # recipe
+
+about:
+  home: https://code.google.com/p/python-microscopy
+  license: GPL
+  summary: super-resolution microscopy and image processing tools
+
+# If the app key is present, the package will be an app, meaning it will
+# appear in the Anaconda launcher.
+#app:
+  # The command that is called to launch the app
+  #entry: ipython notebook
+  # Icon file contained in the recipe
+  #icon: icon_64x64.png
+  #summary: Summary of the package
+  # If own_environment is true, installing the app through the launcher
+  # will install into its own environment. The default is false.
+  #own_environment: true
+
