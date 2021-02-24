@@ -1,0 +1,129 @@
+# This workflows will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+#just build a single, lightweight, dependency to troubleshoot
+
+name: Build PYME packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+#  nix:
+#    strategy:
+#      matrix:
+#        os: [ubuntu-latest] #windows-latest, macos-latest]
+#        python: ['3.6',] #,2.7] - # 2.7 disabled for now due to missing VC9
+#
+#    runs-on: ${{ matrix.os }}
+#
+#    steps:
+#    - uses: actions/checkout@v2
+#    - uses: conda-incubator/setup-miniconda@v2
+#      with:
+#        auto-update-conda: true
+#        python-version: ${{ matrix.python }}
+#
+#    - name: Install dependencies
+#      run: |
+#        conda install conda-build anaconda-client
+#        conda config --add channels david_baddeley
+#        mkdir ~/pkg_build
+#    - name: Conda info
+#      run: |
+#        conda info
+#        conda list
+#    - name: Build and publish
+#      env:
+#        ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
+#      run: |
+#        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends python-microscopy
+#        #ls -al ~/pkg_build/linux-64
+#        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
+
+
+  osx:
+    strategy:
+      matrix:
+        os: [macos-latest] #windows-latest, macos-latest]
+        python: ['3.6', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: ${{ matrix.python }}
+
+    - name: Install dependencies
+      run: |
+        conda install conda-build anaconda-client
+        conda config --add channels david_baddeley
+        mkdir ~/pkg_build
+    - name: Conda info
+      run: |
+        conda info
+        conda list
+    - name: Build and publish
+      env:
+        ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
+      run: |
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends-strict
+        #ls -al ~/pkg_build/linux-64
+        /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
+
+
+  win:
+    strategy:
+      matrix:
+        os: [windows-latest] #windows-latest, macos-latest]
+        python: ['3.6',] #,2.7] - # 2.7 disabled for now due to missing VC9
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: ${{ matrix.python }}
+
+    - name: Install dependencies
+      shell: pwsh
+      run: |
+        conda install conda-build anaconda-client
+        conda config --add channels david_baddeley
+        mkdir ~/pkg_build
+
+    - name: Conda info
+      run: |
+        conda info
+        conda list
+    - name: Build and publish
+      shell: pwsh
+      env:
+        ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
+      run: |
+        conda build --skip-existing -c david_baddeley pyme-depends-strict
+        #ls -al ~/pkg_build/linux-64
+        ls C:\Miniconda\Scripts\
+        #ls C:\Miniconda\bin\
+        ls C:\Miniconda\envs\test\Scripts
+        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.tar.bz2
+
+#    - name: Installers
+#      shell: pwsh
+#      env:
+#        USERNAME: ${{ secrets.DOCS_USERNAME }}
+#        PASSWORD: ${{ secrets.DOCS_PASSWORD }}
+#      run: |
+#        conda install constructor
+#        cd ./installers
+#        constructor .
+#        $files = Get-ChildItem ./*.exe
+#        foreach ($file in $files) {echo "uploading $file ..."; curl.exe -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
+#        #forfiles /P . /M *.exe /C "curl -u \"${USERNAME}:${PASSWORD}\" -T @file https://python-microscopy.org:2078/"
+
