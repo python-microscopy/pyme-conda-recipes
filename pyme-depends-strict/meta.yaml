@@ -1,5 +1,5 @@
 package:
-  name: pyme-depends       # lower case name of package, may contain '-' but no spaces
+  name: pyme-depends-strict       # lower case name of package, may contain '-' but no spaces
   version: 1.14       # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
