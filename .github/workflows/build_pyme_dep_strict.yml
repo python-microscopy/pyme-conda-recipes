@@ -67,12 +67,13 @@ jobs:
       run: |
         conda info
         conda list
-    - name: Build and publish
+    - name: Build
+      run: |
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends-strict
+    - name: Publish
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends-strict
-        #ls -al ~/pkg_build/linux-64
         /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
 
 
@@ -102,12 +103,15 @@ jobs:
       run: |
         conda info
         conda list
-    - name: Build and publish
+    - name: Build
+      shell: pwsh
+      run: |
+        conda build --skip-existing -c david_baddeley pyme-depends-strict
+    - name: Publish
       shell: pwsh
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build --skip-existing -c david_baddeley pyme-depends-strict
         #ls -al ~/pkg_build/linux-64
         ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
