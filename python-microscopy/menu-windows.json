@@ -8,7 +8,7 @@
                 "name": "launchWorkers",
                 "workdir": "${USERPROFILE}",
                 "icon": "${MENU_DIR}/pmanal.ico",
-                "desktop": true,
+                "desktop": false,
                 "quicklaunch": true
             },
             {
@@ -17,7 +17,7 @@
                 "name": "PYMEClusterOfOne",
                 "workdir": "${USERPROFILE}",
                 "icon": "${MENU_DIR}/pmanal.ico",
-                "desktop": true,
+                "desktop": false,
                 "quicklaunch": true
             },
             {
@@ -41,15 +41,24 @@
             {
                 "script": "${PREFIX}/Scripts/bakeshop.exe",
                 "scriptarguments": [],
-                "name": "Bakeshop",
+                "name": "PYMEBakeshop",
                 "workdir": "${USERPROFILE}",
                 "icon": "${MENU_DIR}/pmanal.ico",
-                "desktop": true,
+                "desktop": false,
+                "quicklaunch": true
+            },
+            {
+                "script": "${PREFIX}/Scripts/PYMEAcquire.exe",
+                "scriptarguments": [],
+                "name": "PYMEAcquire (simulator)",
+                "workdir": "${USERPROFILE}",
+                "icon": "${MENU_DIR}/pmacquire.ico",
+                "desktop": false,
                 "quicklaunch": true
             },
             {
                 "webbrowser": "http://python-microscopy.org/doc/index.html",
-                "name" : "Documentation"
+                "name" : "PYME Documentation"
             },
             {
               "name": "Anaconda Prompt",

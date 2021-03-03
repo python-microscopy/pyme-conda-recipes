@@ -118,17 +118,3 @@ jobs:
         #ls C:\Miniconda\bin\
         ls C:\Miniconda\envs\test\Scripts
         C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.tar.bz2
-
-#    - name: Installers
-#      shell: pwsh
-#      env:
-#        USERNAME: ${{ secrets.DOCS_USERNAME }}
-#        PASSWORD: ${{ secrets.DOCS_PASSWORD }}
-#      run: |
-#        conda install constructor
-#        cd ./installers
-#        constructor .
-#        $files = Get-ChildItem ./*.exe
-#        foreach ($file in $files) {echo "uploading $file ..."; curl.exe -u "${USERNAME}:${PASSWORD}" -T $file.FullName https://python-microscopy.org:2078/}
-#        #forfiles /P . /M *.exe /C "curl -u \"${USERNAME}:${PASSWORD}\" -T @file https://python-microscopy.org:2078/"
-
