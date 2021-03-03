@@ -158,7 +158,7 @@ requirements:
     - pyfftw [py3k]
 
     - mpld3
-    - python.app      [osx]
+    - python.app ==2     [osx]
     - cherrypy
     - scikit-image
     - scikit-learn
