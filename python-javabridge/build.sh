@@ -5,6 +5,9 @@ if [ -n "$OSX_ARCH" ]
         export CFLAGS='-Wno-implicit-function-declaration'
 fi
 
+# JAVA_HOME is set by openjdk install
+export JDK_HOME=$LIBRARY_PREFIX
+
 $PYTHON setup.py install
 # Add more build steps here, if they are necessary.
 
