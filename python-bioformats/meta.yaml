@@ -32,14 +32,14 @@ requirements:
     - setuptools
     - boto3 >=1.14.23
     - future >=0.18.2
-    - python-javabridge 4.0.0
+    - python-javabridge ==4.0.0
 
   run:
     - python
     # - openjdk
     - boto3 >=1.14.23
     - future >=0.18.2
-    - python-javabridge 4.0.0
+    - python-javabridge ==4.0.0
 
 test:
   # Python imports, fine to import javabridge and bioformats w/o the python- in front
