@@ -63,6 +63,8 @@ attempt_hardlinks: True
 
 ignore_duplicate_files: True
 
+uninstall_name: python-microscopy
+
 # default install prefix
 #default_prefix: /opt/example
 
