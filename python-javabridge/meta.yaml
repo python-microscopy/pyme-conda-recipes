@@ -12,12 +12,12 @@ requirements:
     - python
     - setuptools
     - cython
-    - numpy
+    - numpy >=1.18.2
     - openjdk
 
   run:
     - python
-    - numpy
+    - numpy >=1.18.2
     - openjdk
 
 test:
