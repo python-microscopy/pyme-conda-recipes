@@ -8,7 +8,6 @@ on:
 
   workflow_run:
     workflows: ["Build PYME packages"]
-    branches: [main]
     types:
       - completed
 
