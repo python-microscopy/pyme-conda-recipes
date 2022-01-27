@@ -1,6 +1,6 @@
 package:
   name: pyme-depends-strict       # lower case name of package, may contain '-' but no spaces
-  version: 1.14       # version of package. Should use the PEP-386 verlib
+  version: 1.15       # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -127,9 +127,9 @@ requirements:
   # in requirements" below).
   run:
     - python {{ python }}
-    - numpy ==1.14.6
-    - scipy ==1.3.0 #to avoid FFTPack issues with pyfftw
-    - matplotlib==3.2.2
+    - numpy ==1.21.2
+    - scipy ==1.7.3 #to avoid FFTPack issues with pyfftw
+    - matplotlib==3.5.0
     #- wxpython <=4.0.4 #might be required to resolve traits issues
     - wxpython==4.0.4
     #<3.9 [py2k] #FIXME - there are still some issues with display logic on wx=4.x
@@ -137,9 +137,9 @@ requirements:
     #- wxpython [py3k] #FIXME - there are still some issues with display logic on wx=4.x
     - pytables ==3.6.1 # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl ==3.1.1a1
-    - traits ==6.1.1 # <=5.1.1
-    - traitsui ==7.1.0
-    - pillow ==8.0.1
+    - traits ==6.2.0 # <=5.1.1
+    - traitsui ==7.1.1
+    - pillow ==8.4.0
 
     #FIXME for py3k
     # Mayavi is now optional as we have an effective replacement for isosurfaces (this leaves volume rendering, STL,
@@ -156,161 +156,152 @@ requirements:
     # - pyfftw3 [py2k]
     - pyfftw ==v0.11.1 #[py3k]
 
-    - mpld3 ==0.5.1
+    - mpld3 ==0.3
     - python.app ==2     [osx]
     - cherrypy ==18.6.0
-    - scikit-image ==0.16.2
-    - scikit-learn ==0.23.2
+    - scikit-image ==0.18.3
+    - scikit-learn ==1.0.2
 
     #FIXME for py3k
     # - shapely [osx and py2k]
 
     # - zeroconf 0.17.7 [py2k]
     - zeroconf ==0.24.0 [win] #[py3k]
-    - zeroconf ==0.26.3 [osx]
-    - requests ==2.25.0
-    - pandas ==1.0.5 
-    - pyyaml ==5.3.1
-    - psutil ==5.7.2
-    - docutils ==0.16
-    - sphinx ==3.2.1
-    - ujson ==4.0.1
-    - jinja2 ==2.11.2
+    - zeroconf ==0.28.0 [osx]
+    - requests ==2.27.1
+    - pandas ==1.3.5 
+    - pyyaml ==6.0
+    - psutil ==5.8.0
+    - docutils ==0.81.1
+    - sphinx ==1.8.5
+    - ujson ==4.2.0
+    - jinja2 ==3.0.2
     # - dispatch [py2k]
     - pycairo ==1.19.1
     - pymecompress ==0.2.0
-    - six ==1.15.0
+    - six ==1.16.0
     - future ==0.18.2
     - pywin32 ==227 [win]
-    - cython ==0.29.21
-    - blosc ==1.19.0 #workaround for bug in pytables packages which fail for blosc >=1.20
+    - cython ==0.29.25
+    - blosc ==1.21.0 #workaround for bug in pytables packages which fail for blosc >=1.20
 
     # Additional pins for packages not included in pyme-depends
-    - pyface ==7.1.0
+    - pyface ==7.3.0
     - alabaster ==0.7.12
-    - babel ==2.9.0
-    - backports ==1.0
+    - babel ==2.9.1
+    - backports ==1.1
     - backports.lzma ==0.0.14
     - blas ==1.0
     - brotlipy ==0.7.0
     - bzip2 ==1.0.8
-    - ca-certificates ==2020.12.8
-    - cairo ==1.14.12
-    - certifi ==2020.12.5
-    - cffi ==1.14.4
-    - chardet ==3.0.4
-    - cheroot ==8.5.0
-    - cloudpickle ==1.6.0
-    - conda ==4.9.2  # do we need this?
-    - conda-package-handling ==1.7.2  # do we need this?
-    - cryptography ==3.3.1
-    - cycler ==0.10.0
+    - ca-certificates ==2021.10.26
+    - cairo ==1.16.0
+    - certifi ==2021.10.8
+    - cffi ==1.15.0
+    - chardet ==4.0.0
+    - cheroot ==8.5.2
+    - cloudpickle ==2.0.0
+    - cryptography ==36.0.0
+    - cycler ==0.11.0
     - cytoolz ==0.11.0
-    - dask-core ==2.30.0
+    - dask-core ==2021.10.0
     - dbus ==1.13.18 [osx]
-    - decorator ==4.4.2
-    - expat ==2.2.10 [osx]
-    - fftw ==3.3.8
-    - fontconfig ==2.13.0 [osx]
-    - freetype ==2.10.4
-    - gettext ==0.19.8.1 [osx]
-    - glib ==2.66.1 [osx]
+    - decorator ==5.1.0
+    - expat ==2.4.1 [osx]
+    - fftw ==3.3.4
+    - fontconfig ==2.13.1 [osx]
+    - freetype ==2.11.0
+    - gettext ==0.21.0 [osx]
+    - glib ==2.69.1 [osx]
     - hdf5 ==1.10.4
     - icc_rt ==2019.0.0 [win]
     - icu ==58.2
-    - idna ==2.10
+    - idna ==3.3
     - ifaddr ==0.1.6
     - imageio ==2.9.0
-    - imagesize ==1.2.0
-    - importlib-metadata ==2.0.0
-    - importlib_metadata ==2.0.0
-    - importlib_resources ==3.3.0
+    - imagesize ==1.3.0
+    - importlib-metadata ==4.10.0
+    - importlib_metadata ==4.8.2
+    - importlib-resources ==5.4.0
     - intel-openmp ==2020.2  # hardware-specific? definitely linked to mkl
-    - intel-openmp ==2019.4 [osx] # hardware-specific? definitely linked to mkl
-    - jaraco.classes ==3.1.0  # do we need this?
-    - jaraco.collections ==3.0.0  # do we need this?
-    - jaraco.functools ==3.0.1  # do we need this?
-    - jaraco.text ==3.2.0  # do we need this?
-    - joblib ==0.17.0
-    - jpeg ==9b
-    - kiwisolver ==1.3.0
-    - lcms2 ==2.11 [osx]
-    - libcxx ==10.0.0 [osx]
-    - libedit ==3.1.20191231 [osx]
+    - intel-openmp ==2021.4.10 [osx] # hardware-specific? definitely linked to mkl
+    - jaraco.classes ==3.2.1  # do we need this?
+    - jaraco.collections ==3.3.0  # do we need this?
+    - jaraco.functools ==3.3.0  # do we need this?
+    - jaraco.text ==3.5.1  # do we need this?
+    - joblib ==1.1.0
+    - jpeg ==9d
+    - kiwisolver ==1.3.1
+    - lcms2 ==2.12 [osx]
+    - libcxx ==12.0.0 [osx]
+    - libedit ==3.1.20210910 [osx]
     - libffi ==3.3 [osx]
     - libgfortran ==3.0.1 [osx]
     - libiconv ==1.16 [osx]
     - libpng ==1.6.37
-    - libtiff ==4.1.0
-    - libxml2 ==2.9.10 [osx]
-    - llvm-openmp ==10.0.0 [osx]
-    - lz4-c ==1.9.2
+    - libtiff ==4.2.0
+    - libxml2 ==2.9.12 [osx]
+    - llvm-openmp ==12.0.0 [osx]
+    - lz4-c ==1.9.3
     - lzo ==2.10
-    - markupsafe ==1.1.1
-    - matplotlib-base ==3.2.2  # do we need this?
+    - markupsafe ==2.0.1
+    - matplotlib-base ==3.5.0  # do we need this?
     - menuinst ==1.4.16 [win]
     - mkl ==2020.2 [win]
-    - mkl ==2019.4 [osx]
-    - mkl-service ==2.3.0
-    - mkl_fft ==1.2.0
-    - mkl_random ==1.1.1
+    - mkl ==2021.4.0 [osx]
+    - mkl-service ==2.4.0
+    - mkl_fft ==1.3.1
+    - mkl_random ==1.2.2
     - mock ==4.0.3
-    - more-itertools ==8.6.0
-    - ncurses ==6.2 [osx]
-    - numexpr ==2.7.1
-    - numpy-base ==1.14.6  # do we need this?
+    - more-itertools ==8.12.0
+    - ncurses ==6.3 [osx]
+    - numexpr ==2.8.1
+    - numpy-base ==1.21.2  # do we need this?
     - olefile ==0.46
-    - openssl ==1.1.1i
-    - packaging ==20.7
-    - pip ==20.3.1  # do we need this?
-    - pcre ==8.44 [osx]
+    - openssl ==1.1.1m
+    - packaging ==21.3
+    - pcre ==8.45 [osx]
     - pixman ==0.40.0
-    - portend ==2.7.0
+    - portend ==2.7.1
     - pycosat ==0.6.3
-    - pycparser ==2.20
-    - pygments ==2.7.3
-    - pyopenssl ==20.0.0
-    - pyparsing ==2.4.7
+    - pycparser ==2.21
+    - pygments ==2.10.0
+    - pyopenssl ==21.0.0
+    - pyparsing ==3.0.4
     - pyqt ==5.9.2
     - pysocks ==1.7.1
-    - python-dateutil ==2.8.1
-    - pytz ==2020.4
+    - python-dateutil ==2.8.2
+    - pytz ==2021.3
     - pywavelets ==1.1.1
     - qt ==5.9.7
-    - readline ==8.0 [osx]
+    - readline ==8.1.2 [osx]
     - repoze.lru ==0.7
     - routes ==2.5.1
-    - ruamel_yaml ==0.15.87
-    - setuptools ==51.0.0
-    - simplejson ==3.17.2
+    - ruamel_yaml ==0.15.100
+    - setuptools ==58.0.4
+    - simplejson ==3.17.6
     - sip ==4.19.8
     - snappy ==1.1.8
-    - snowballstemmer ==2.0.0
-    - sphinxcontrib-applehelp ==1.0.2  # do we need this?
-    - sphinxcontrib-devhelp ==1.0.2  # do we need this?
-    - sphinxcontrib-htmlhelp ==1.0.3  # do we need this?
-    - sphinxcontrib-jsmath ==1.0.1  # do we need this?
-    - sphinxcontrib-qthelp ==1.0.3  # do we need this?
-    - sphinxcontrib-serializinghtml ==1.1.4  # do we need this?
-    - sqlite ==3.33.0
-    - tempora ==4.0.1
-    - threadpoolctl ==2.1.0
-    - tk ==8.6.10
-    - toolz ==0.11.1
+    - snowballstemmer ==2.2.0
+    - sqlite ==3.37.0
+    - tempora ==4.1.1
+    - threadpoolctl ==2.2.0
+    - tk ==8.6.11
+    - toolz ==0.11.2
     - tornado ==6.1
-    - tqdm ==4.54.1
-    - urllib3 ==1.25.11
+    - tqdm ==4.62.3
+    - urllib3 ==1.26.7
     - vc ==14.2 [win]
     - vs2015_runtime ==14.27.29016 [win]
-    - wheel ==0.36.1
+    - wheel ==0.37.1
     - win_inet_pton ==1.1.0 [win]
     - wincertstore ==0.2 [win]
     - xz ==5.2.5
     - yaml ==0.2.5
     - zc.lockfile ==2.0
-    - zipp ==3.4.0
+    - zipp ==3.7.0
     - zlib ==1.2.11
-    - zstd ==1.4.5
+    - zstd ==1.4.9
 
   #unfortunately not availible through conda on windows ##FIXME
 
