@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest] #windows-latest, macos-latest]
-        python: ['3.6', '3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.7', '3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -46,7 +46,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
-        python: ['3.6', '3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.7', '3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -78,7 +78,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest] #windows-latest, macos-latest]
-        python: ['3.6', '3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.7', '3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
