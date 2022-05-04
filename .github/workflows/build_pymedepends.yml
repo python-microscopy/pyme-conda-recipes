@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest] #windows-latest, macos-latest]
-        python: ['3.7',] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -37,7 +37,7 @@ jobs:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley toposort pyfftw dispatch pymecompress mpld3 ifaddr zeroconf pyme-depends
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends 
         #ls -al ~/pkg_build/linux-64
         /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
 
@@ -46,7 +46,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
-        python: ['3.7', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -69,7 +69,7 @@ jobs:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley toposort pyfftw dispatch pymecompress mpld3 ifaddr zeroconf pyme-depends
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends 
         #ls -al ~/pkg_build/linux-64
         /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
 
@@ -78,7 +78,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest] #windows-latest, macos-latest]
-        python: ['3.7', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.7',] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -102,7 +102,7 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build --skip-existing -c david_baddeley toposort pyfftw dispatch pymecompress mpld3 ifaddr zeroconf pyme-depends
+        conda build --skip-existing -c david_baddeley pyme-depends
         #ls -al ~/pkg_build/linux-64
         ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
