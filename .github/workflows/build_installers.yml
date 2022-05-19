@@ -16,7 +16,7 @@ jobs:
   win:
     strategy:
       matrix:
-        os: [windows-latest, ] # macos-latest], ubuntu-latest]
+        os: [windows-2019, ] # macos-latest], ubuntu-latest]
         python: ['3.7', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
