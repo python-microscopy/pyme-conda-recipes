@@ -33,7 +33,7 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda install constructor requests jinja2
+        conda install constructor requests jinja2 nsis==3.01
         cd ./installers
 
         $Env:PYME_RELEASE=python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])"
