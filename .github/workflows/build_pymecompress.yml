@@ -70,7 +70,7 @@ jobs:
       run: |
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pymecompress 
-        #ls -al ~/pkg_build/linux-64
+        ls -al ~/pkg_build/
         /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
 
 
