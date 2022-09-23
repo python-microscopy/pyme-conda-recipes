@@ -3,15 +3,6 @@
     "menu_items":
         [
             {
-                "script": "${PREFIX}/Scripts/launchWorkers.exe",
-                "scriptarguments": [],
-                "name": "launchWorkers",
-                "workdir": "${USERPROFILE}",
-                "icon": "${MENU_DIR}/pmanal.ico",
-                "desktop": false,
-                "quicklaunch": true
-            },
-            {
                 "script": "${PREFIX}/Scripts/PYMEClusterOfOne.exe",
                 "scriptarguments": [],
                 "name": "PYMEClusterOfOne",
