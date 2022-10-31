@@ -138,8 +138,8 @@ requirements:
     - pytables # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl
     - traits # <=5.1.1
-    - traitsui <=7.1.0
-    - pyface <=7.1.0
+    - traitsui #<=7.1.0
+    - pyface #<=7.1.0
     - pillow
 
     #FIXME for py3k
@@ -167,7 +167,7 @@ requirements:
     - shapely [osx and py2k]
 
     - zeroconf 0.17.7 [py2k]
-    - zeroconf <=0.26.3 [py3k]
+    - zeroconf [py3k] #<=0.26.3 [py3k]
     - requests
     - pandas
     - pyyaml
@@ -183,7 +183,7 @@ requirements:
     - future
     - pywin32 [win]
     - cython
-    - blosc <=1.19 #workaround for bug in pytables packages which fail for blosc >=1.20 - TODO - is this still needed?
+    - blosc #<=1.19 #workaround for bug in pytables packages which fail for blosc >=1.20 - TODO - is this still needed?
     - django ==2.1
 
     
