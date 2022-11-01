@@ -1,9 +1,11 @@
 :: "%PYTHON%" setup.py build_ext -c mingw32
 ::"%PYTHON%" setup.py install
 
-copy "%RECIPE_DIR%"\libpython27.a "%PREFIX%"\libs
+:: copy "%RECIPE_DIR%"\libpython27.a "%PREFIX%"\libs
 
 cd pymecompress
+
+mv setup.cfg.win setup.cfg
 
 "%PYTHON%" setup.py build --compiler=mingw32
 if errorlevel 1 exit /B 1
