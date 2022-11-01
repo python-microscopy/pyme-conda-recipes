@@ -5,10 +5,10 @@
 
 cd pymecompress
 
-mv setup.cfg.win setup.cfg
+copy setup.cfg.win setup.cfg
 
-"%PYTHON%" setup.py build --compiler=mingw32
-if errorlevel 1 exit /B 1
+:: "%PYTHON%" setup.py build --compiler=mingw32
+:: if errorlevel 1 exit /B 1
 
 "%PYTHON%" setup.py install
 if errorlevel 1 exit /B 1
