@@ -3,7 +3,7 @@
 
 :: copy "%RECIPE_DIR%"\libpython27.a "%PREFIX%"\libs
 
-cd pymecompress
+:: cd pymecompress
 
 copy setup.cfg.win setup.cfg
 
