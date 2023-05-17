@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd "PYME"
 
 if [ -n "$OSX_ARCH" ]
     then

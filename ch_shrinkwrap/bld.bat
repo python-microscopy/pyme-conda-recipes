@@ -7,6 +7,7 @@ call "%MSVC_PATH%\vcvarsall.bat" x64
 ) else call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
 
 "%PYTHON%" setup.py install
+"%PYTHON%" install_plugin.py
 
 :: copy "%RECIPE_DIR%"\libpython27.a "%PREFIX%"\libs
 
