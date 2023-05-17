@@ -27,6 +27,7 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        activate-environment: foo
     - name: Conda info
       run: |
         conda info
