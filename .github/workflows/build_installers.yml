@@ -30,10 +30,12 @@ jobs:
         activate-environment: foo
     - name: Conda info
       run: |
+        conda activate foo
         conda info
         conda list
     - name: Build
       run: |
+        conda activate foo
         conda install -c conda-forge constructor requests conda-standalone jinja2 nsis==3.01
         cd ./installers
 
@@ -68,12 +70,15 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        activate-environment: foo
     - name: Conda info
       run: |
+        conda activate foo
         conda info
         conda list
     - name: Build
       run: |
+        conda activate foo
         conda install constructor requests jinja2
         cd ./installers
         ls /usr/local/miniconda/bin
