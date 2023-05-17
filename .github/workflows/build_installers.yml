@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019, ] # macos-latest], ubuntu-latest]
-        python: ['3.7', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.8', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -36,7 +36,7 @@ jobs:
     - name: Build
       run: |
         conda activate foo
-        conda install -c conda-forge constructor requests conda-standalone jinja2 nsis==3.01
+        conda install -c conda-forge constructor requests conda-standalone jinja2 nsis==3.01 pillow
         cd ./installers
 
         $Env:PYME_RELEASE=python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])"
@@ -73,12 +73,13 @@ jobs:
         activate-environment: foo
     - name: Conda info
       run: |
-        conda activate foo
+        
+        source /usr/local/minconda/envs/foo/activate.sh
         conda info
         conda list
     - name: Build
       run: |
-        conda activate foo
+        source /usr/local/minconda/envs/foo/activate.sh
         conda install constructor requests jinja2
         cd ./installers
         ls /usr/local/miniconda/bin
