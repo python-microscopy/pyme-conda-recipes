@@ -13,6 +13,7 @@ channels: &id1
 specs:
   - python=3.7.*
   - python-microscopy={{ os.environ['PYME_RELEASE'] }}
+  - ch-shrinkwrap
   - conda
   #- wxpython <3.9
   #- numpy=1.14.*
