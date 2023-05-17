@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019, ] # macos-latest], ubuntu-latest]
-        python: ['3.8', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.9', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -27,16 +27,18 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        channels: conda-forge
+        mamba-version: '*'
         activate-environment: foo
     - name: Conda info
       run: |
-        conda activate foo
+        #conda activate foo
         conda info
         conda list
     - name: Build
       run: |
-        conda activate foo
-        conda install -c conda-forge constructor requests conda-standalone jinja2 nsis==3.01 pillow
+        #conda activate foo
+        mamba install -c conda-forge constructor requests conda-standalone jinja2 nsis==3.01 pillow<9.4.0
         cd ./installers
 
         $Env:PYME_RELEASE=python -c "import requests;print(requests.get('https://api.github.com/repos/python-microscopy/python-microscopy/releases/latest').json()['tag_name'])"
@@ -60,7 +62,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest,]
-        python: ['3.7', ] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.8', ] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -70,17 +72,19 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        channels: conda-forge
+        mamba-version: '*'
         activate-environment: foo
     - name: Conda info
       run: |
         
-        source /usr/local/minconda/envs/foo/activate.sh
+        #source /usr/local/minconda/envs/foo/activate.sh
         conda info
         conda list
     - name: Build
       run: |
-        source /usr/local/minconda/envs/foo/activate.sh
-        conda install constructor requests jinja2
+        #source /usr/local/minconda/envs/foo/activate.sh
+        mamba install -c conda-forge constructor requests jinja2
         cd ./installers
         ls /usr/local/miniconda/bin
 
