@@ -9,7 +9,7 @@ else
     $PYTHON setup.py install
 fi
 
-$PYTHON install_plugin.py
+$PYTHON install_plugin.py dist
 #$PYTHON pymecompress/setup.py install
 
 # Add more build steps here, if they are necessary.
