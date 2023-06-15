@@ -102,6 +102,7 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
+        mv setup.cfg.win setup.cfg
         conda build --skip-existing -c david_baddeley pymecompress
         #ls -al ~/pkg_build/linux-64
         ls C:\Miniconda\Scripts\
