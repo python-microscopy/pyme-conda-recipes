@@ -1,6 +1,6 @@
 package:
   name: pyme-depends       # lower case name of package, may contain '-' but no spaces
-  version: 1.21    # version of package. Should use the PEP-386 verlib
+  version: 1.22    # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -164,7 +164,7 @@ requirements:
     - scikit-learn
 
     #FIXME for py3k
-    - shapely [osx and py2k]
+    #- shapely [osx and py2k]
 
     #- zeroconf 0.17.7 [py2k]
     - zeroconf #[py3k] #<=0.26.3 [py3k]
@@ -184,7 +184,7 @@ requirements:
     - pywin32 [win]
     - cython
     - blosc #<=1.19 #workaround for bug in pytables packages which fail for blosc >=1.20 - TODO - is this still needed?
-    - django ==2.1
+    - django >=2.1
 
     
   #unfortunately not availible through conda on windows ##FIXME
