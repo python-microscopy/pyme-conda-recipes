@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest] #windows-latest, macos-latest]
-        python: ['3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -29,6 +29,7 @@ jobs:
       run: |
         conda install conda-build anaconda-client
         conda config --add channels david_baddeley
+        conda install -c conda-forge boa
         mkdir ~/pkg_build
     - name: Conda info
       run: |
@@ -38,7 +39,7 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends python-microscopy
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
         #ls -al ~/pkg_build/linux-64
         /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
 
@@ -47,7 +48,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
-        python: ['3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -61,6 +62,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda install conda-build anaconda-client
+        conda install -c conda-forge boa
         conda config --add channels david_baddeley
         mkdir ~/pkg_build
     - name: Conda info
@@ -69,7 +71,7 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pyme-depends python-microscopy
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
     - name: Publish
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
@@ -82,7 +84,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019] #windows-latest, macos-latest]
-        python: ['3.7'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -97,6 +99,7 @@ jobs:
       shell: pwsh
       run: |
         conda install conda-build anaconda-client
+        conda install -c conda-forge boa
         conda config --add channels david_baddeley
         mkdir ~/pkg_build
 
@@ -107,7 +110,7 @@ jobs:
     - name: Build
       shell: pwsh
       run: |
-        conda build --skip-existing -c david_baddeley pyme-depends python-microscopy
+        conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
     - name: Publish
       shell: pwsh
       env:
