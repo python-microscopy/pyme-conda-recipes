@@ -39,7 +39,8 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
         #ls -al ~/pkg_build/linux-64
         /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
 
@@ -71,7 +72,8 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
     - name: Publish
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
@@ -110,14 +112,16 @@ jobs:
     - name: Build
       shell: pwsh
       run: |
-        conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
+        #conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
     - name: Publish
       shell: pwsh
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        #ls -al ~/pkg_build/linux-64
+        ls -al ~/pkg_build/
         ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
         ls C:\Miniconda\envs\test\Scripts
-        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.tar.bz2
+        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force ~\pkg_build\win-64\*.tar.bz2
