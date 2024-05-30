@@ -1,6 +1,6 @@
 package:
   name: pyme-depends       # lower case name of package, may contain '-' but no spaces
-  version: 1.22    # version of package. Should use the PEP-386 verlib
+  version: 1.23    # version of package. Should use the PEP-386 verlib
                       # conventions. Note that YAML will interpret
                       # versions like 1.0 as floats, meaning that 1.0 will
                       # be the same as 1. To avoid this, always put the
@@ -138,8 +138,8 @@ requirements:
     - pytables # <=3.4.2 #seems like the version pinning may no longer be needed ... fingers crossed
     - pyopengl
     - traits # <=5.1.1
-    - traitsui <=7.1.0
-    - pyface <=7.1.0
+    - traitsui >=7.6.0 #<=7.1.0
+    - pyface >=7.6.0 #<=7.1.0
     - pillow
 
     #FIXME for py3k
