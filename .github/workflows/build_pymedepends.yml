@@ -57,6 +57,8 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        mamba-version: "*"
+        miniforge-version: "latest"
     - name: Conda info
       run: |
         conda info
