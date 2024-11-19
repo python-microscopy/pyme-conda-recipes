@@ -48,7 +48,7 @@ jobs:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
         python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
-        architecture: ['x86_64', 'arm64']
+        #architecture: ['x86_64', 'arm64']
 
     runs-on: ${{ matrix.os }}
 
@@ -58,7 +58,7 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
-        architecture: $${{ matrix.architecture }}
+        #architecture: ${{ matrix.architecture }}
         mamba-version: "*"
         miniforge-version: "latest"
     - name: Conda info
