@@ -48,6 +48,7 @@ jobs:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
         python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        architecture: ['x86_64', 'arm64']
 
     runs-on: ${{ matrix.os }}
 
@@ -57,6 +58,7 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        architecture: $${{ matrix.architecture }}
         mamba-version: "*"
         miniforge-version: "latest"
     - name: Conda info
@@ -75,7 +77,7 @@ jobs:
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends 
         #ls -al ~/pkg_build/linux-64
-        anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
+        /Users/runner/miniconda3/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
 
 
   win:
