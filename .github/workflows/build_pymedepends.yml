@@ -75,7 +75,7 @@ jobs:
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends 
         #ls -al ~/pkg_build/linux-64
-        /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
+        anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
 
 
   win:
