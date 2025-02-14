@@ -121,6 +121,7 @@ requirements:
     #- mingw  [win]
     - m2w64-toolchain [win]
     - libpython [win]
+    - setuptools <60
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   # Package names should be any valid conda spec (see "Specifying versions
