@@ -6,8 +6,8 @@ python:
   - 3.9.*
   - 3.10.*
   - 3.11.*
-  - 3.12.*
-  - 3.13.* 
+  #- 3.12.*   # not compatible with setuptools <60.0
+  #- 3.13.*   # not compatible with setuptools <60.0
 numpy:
   - 1.21.*
 #  - 1.11.* # [py2k]
