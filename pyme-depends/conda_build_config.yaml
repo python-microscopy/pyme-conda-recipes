@@ -3,8 +3,8 @@ python:
   # - 3.6.*
   # - 3.7.*
   - 3.8.*
-  - 3.9.*
-  - 3.10.* #[linux] #no packages for django=2.1 on osx python=3.10  
+  #- 3.9.*
+  #- 3.10.* #[linux] #no packages for django=2.1 on osx python=3.10  
 #numpy:
 #  - 1.14.*
 #  - 1.11.* [py2k]

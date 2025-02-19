@@ -40,10 +40,12 @@ jobs:
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends 
         #ls -al ~/pkg_build/linux-64
-        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
+        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/noarch/*.tar.bz2
+        #/usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
 
 
   osx:
+    if: false
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
@@ -81,6 +83,7 @@ jobs:
 
 
   win:
+    if: false
     strategy:
       matrix:
         os: [windows-latest] #windows-latest, macos-latest]
