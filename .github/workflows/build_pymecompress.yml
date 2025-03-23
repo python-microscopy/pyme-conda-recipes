@@ -39,7 +39,7 @@ jobs:
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pymecompress 
         #ls -al ~/pkg_build/linux-64
-        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
+        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.conda
 
 
   osx:
@@ -107,7 +107,7 @@ jobs:
         #mv setup.cfg.win setup.cfg
         conda build --skip-existing -c david_baddeley pymecompress
         #ls -al ~/pkg_build/linux-64
-        ls C:\Miniconda\Scripts\
+        #ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
-        ls C:\Miniconda\envs\test\Scripts
+        #ls C:\Miniconda\envs\test\Scripts
         C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.tar.bz2
