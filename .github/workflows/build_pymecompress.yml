@@ -39,7 +39,7 @@ jobs:
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pymecompress 
         #ls -al ~/pkg_build/linux-64
-        if [ -f ~/pkg_build/linux-64/*.conda ]; then
+        if compgen -G "~/pkg_build/linux-64/*.conda" > /dev/null; then
           /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.conda
         fi
         #/usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.conda
@@ -72,16 +72,17 @@ jobs:
         conda install conda-build anaconda-client
         mkdir ~/pkg_build
     - name: Build and publish
+      shell: bash #force bash shell to avoid issues with conditonals
       env:
         ANACONDA_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         export ANACONDA_API_TOKEN=$ANACONDA_TOKEN
         conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley pymecompress 
         ls -al ~/pkg_build/
-        if [ -f ~/pkg_build/osx-64/*.conda ]; then
+        if compgen -G "~/pkg_build/osx-64/*.conda" > /dev/null; then
           /Users/runner/miniconda3/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.conda
         fi
-        if [ -f ~/pkg_build/osx-arm64/*.conda ]; then
+        if compgen -G "~/pkg_build/osx-arm64/*.conda" > /dev/null; then
           /Users/runner/miniconda3/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-arm64/*.conda
         fi
        
