@@ -49,17 +49,19 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
+        architecture: ['x86_64', 'arm64']
         python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
+    - uses: conda-incubator/setup-miniconda@v4
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
-        mamba-version: "*"
+        #mamba-version: "*"
+        architecture: ${{ matrix.architecture }}
         miniforge-version: "latest"
     - name: Conda info
       run: |
