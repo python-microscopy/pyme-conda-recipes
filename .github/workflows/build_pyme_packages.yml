@@ -39,10 +39,10 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
         #ls -al ~/pkg_build/linux-64
-        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.tar.bz2
+        /usr/share/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/linux-64/*.conda
 
 
   osx:
@@ -50,15 +50,18 @@ jobs:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
         python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        architecture: ['x86_64', 'arm64']
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
+    - uses: conda-incubator/setup-miniconda@v3
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        architecture: ${{ matrix.architecture }}
+        miniforge-version: "latest"
 
     - name: Install dependencies
       run: |
@@ -72,20 +75,26 @@ jobs:
         conda list
     - name: Build
       run: |
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
     - name: Publish
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         #ls -al ~/pkg_build/linux-64
-        /usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.tar.bz2
+        # packages will go to different directories depending on the architecture
+        if ${{matrix.architecture}} == 'x86_64'; then
+          /Users/runner/miniconda3/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.conda
+        else
+          /Users/runner/miniconda3/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-arm64/*.conda
+        fi
+        #/usr/local/miniconda/bin/anaconda -v --show-traceback upload -u david_baddeley --force ~/pkg_build/osx-64/*.conda
 
 
   win:
     strategy:
       matrix:
-        os: [windows-2019] #windows-latest, macos-latest]
+        os: [windows-latest] #windows-latest, macos-latest]
         python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
@@ -113,15 +122,15 @@ jobs:
       shell: pwsh
       run: |
         #conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
-        conda mambabuild --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
     - name: Publish
       shell: pwsh
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
         ls -al ~/pkg_build/
-        ls C:\Miniconda\Scripts\
+        #ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
-        ls C:\Miniconda\envs\test\Scripts
-        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force ~\pkg_build\win-64\*.tar.bz2
+        #ls C:\Miniconda\envs\test\Scripts
+        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force ~\pkg_build\win-64\*.conda
