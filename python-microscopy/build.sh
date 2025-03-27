@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "PYME"
+#cd "PYME"
 
 if [ -n "$OSX_ARCH" ]
     then
@@ -21,7 +21,7 @@ echo $PREFIX
 if [ -n "$OSX_ARCH" ] && ["$PY3K" -eq "0"]
 	then
 		echo "Installing OSX Launchers"
-		cd ../osxLaunchers
+		cd osxLaunchers
 		xcodebuild -alltargets
 
 		cp -r ./build/Release/*.app $PREFIX
