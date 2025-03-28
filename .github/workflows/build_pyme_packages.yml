@@ -29,7 +29,7 @@ jobs:
       run: |
         conda install conda-build anaconda-client
         conda config --add channels david_baddeley
-        conda install -c conda-forge boa
+        #conda install -c conda-forge boa
         mkdir ~/pkg_build
     - name: Conda info
       run: |
@@ -66,7 +66,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda install conda-build anaconda-client
-        conda install -c conda-forge boa
+        #conda install -c conda-forge boa
         conda config --add channels david_baddeley
         mkdir ~/pkg_build
     - name: Conda info
@@ -110,7 +110,7 @@ jobs:
       shell: pwsh
       run: |
         conda install conda-build anaconda-client
-        conda install -c conda-forge boa
+        #conda install -c conda-forge boa
         conda config --add channels david_baddeley
         mkdir ~/pkg_build
 
