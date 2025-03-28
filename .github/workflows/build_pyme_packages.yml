@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        conda install conda-build anaconda-client
+        conda install conda-build anaconda-client pillow
         conda config --add channels david_baddeley
         #conda install -c conda-forge boa
         mkdir ~/pkg_build
@@ -65,7 +65,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        conda install conda-build anaconda-client
+        conda install conda-build anaconda-client pillow
         #conda install -c conda-forge boa
         conda config --add channels david_baddeley
         mkdir ~/pkg_build
@@ -112,8 +112,6 @@ jobs:
         conda install conda-build anaconda-client
         #conda install -c conda-forge boa
         conda config --add channels david_baddeley
-        mkdir ~/pkg_build
-
     - name: Conda info
       run: |
         conda info
@@ -123,6 +121,7 @@ jobs:
       run: |
         #conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
         #conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
+        mkdir ~/pkg_build
         conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
     - name: Publish
       shell: pwsh
