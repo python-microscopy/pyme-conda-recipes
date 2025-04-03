@@ -138,7 +138,7 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python {{ python }}
-    - numpy {{ numpy }}ss
+    - numpy {{ numpy }}
     - python.app      [osx]
     #- {{ compiler('c') }} [osx]
     #- {{ compiler('cxx') }} [osx]
