@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda install conda-build anaconda-client pillow
-        conda config --add channels david_baddeley
+        #sconda config --add channels david_baddeley
         #conda install -c conda-forge boa
         mkdir ~/pkg_build
     - name: Conda info
@@ -67,7 +67,7 @@ jobs:
       run: |
         conda install conda-build anaconda-client pillow
         #conda install -c conda-forge boa
-        conda config --add channels david_baddeley
+        #sconda config --add channels david_baddeley
         mkdir ~/pkg_build
     - name: Conda info
       run: |
@@ -76,7 +76,7 @@ jobs:
     - name: Build
       run: |
         #conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
+        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley python-microscopy
     - name: Publish
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
@@ -105,13 +105,14 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python }}
+        miniforge-version: "latest"
 
     - name: Install dependencies
-      shell: pwsh
+      shell: pwshsss
       run: |
         conda install conda-build anaconda-client
         #conda install -c conda-forge boa
-        conda config --add channels david_baddeley
+        #conda config --add channels david_baddeley
     - name: Conda info
       run: |
         conda info
