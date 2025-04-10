@@ -155,6 +155,7 @@ requirements:
      - python {{ python }}
      - numpy >={{ numpy }}
      - pyme-depends >=1.17
+     #- setuptools <60
 #    - python {{ python }}
 #    - numpy {{ numpy }}
 #    - scipy

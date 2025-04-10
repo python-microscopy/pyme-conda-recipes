@@ -1,13 +1,16 @@
 #!/bin/bash
 
-#cd "PYME"
+cd "PYME"
+echo $OSX_ARCH
 
 if [ -n "$OSX_ARCH" ]
     then
-        $PYTHON setup.py build
+        echo "building for OSX"
+		#$PYTHON setup.py build
+		echo "Installing built package"
         $PREFIX/python.app/Contents/MacOS/python setup.py install
 else
-    $PYTHON setup.py install
+    $PYTHON PYME/setup.py install
 fi
 #$PYTHON pymecompress/setup.py install
 
