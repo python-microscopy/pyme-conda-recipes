@@ -10,7 +10,7 @@ if [ -n "$OSX_ARCH" ]
 		echo "Installing built package"
         $PREFIX/python.app/Contents/MacOS/python setup.py install
 else
-    $PYTHON PYME/setup.py install
+    $PYTHON setup.py install
 fi
 #$PYTHON pymecompress/setup.py install
 
