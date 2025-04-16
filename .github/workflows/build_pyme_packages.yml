@@ -95,7 +95,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest] #windows-latest, macos-latest]
-        python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
+        python: ['3.8s'] #,2.7] - # 2.7 disabled for now due to missing VC9
 
     runs-on: ${{ matrix.os }}
 
@@ -122,15 +122,15 @@ jobs:
       run: |
         #conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
         #conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
-        mkdir ~/pkg_build
-        conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge python-microscopy
+        #mkdir ~/pkg_build
+        conda build --skip-existing -c david_baddeley -c conda-forge python-microscopy
     - name: Publish
       shell: pwsh
       env:
         ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
       run: |
-        ls -al ~/pkg_build/
+        #ls -al ~/pkg_build/
         #ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
         #ls C:\Miniconda\envs\test\Scripts
-        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force ~\pkg_build\win-64\*.conda
+        C:\Miniconda\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.condas
