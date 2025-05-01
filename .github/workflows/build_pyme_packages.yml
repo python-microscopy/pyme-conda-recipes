@@ -117,9 +117,11 @@ jobs:
       run: |
         conda info
         conda list
+        where cl
     - name: Build
       shell: pwsh
       run: |
+        C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvarsall.bat
         #conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
         #conda build --output-folder ~/pkg_build --skip-existing -c david_baddeley -c conda-forge pyme-depends
         #mkdir ~/pkg_build
