@@ -121,7 +121,7 @@ jobs:
     - name: Build
       shell: pwsh
       env:
-        MSVC_PATH: "C:\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools"
+        MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools"
       run: |
         #"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvarsall.bat"
         #conda mambabuild --skip-existing -c david_baddeley -c conda-forge pyme-depends python-microscopy
