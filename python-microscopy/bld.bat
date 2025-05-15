@@ -7,10 +7,15 @@ copy "%RECIPE_DIR%\menu-windows.json" "%PREFIX%\Menu"
 copy "resources\icons\*.ico" "%PREFIX%\Menu"
 
 rem Cludge to make us find the community edition of visualc
+echo "### bld.bat ### - about to run vcvarsall.bat"
 echo %MSVC_PATH%
+echo %PATH%
 if defined MSVC_PATH (
 call "%MSVC_PATH%\vcvars64.bat"
 ) else call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+echo "### bld.bat ### - after running vcvarsall.bat"
+echo %PATH%
 
 "%PYTHON%" setup.py install
 
