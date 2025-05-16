@@ -125,10 +125,10 @@ jobs:
       env:
         MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools"
       run: |
-        echo "MSCVC_PATH: %MSVC_PATH%"
-        echo "PATH: %PATH%"
-        . "%MSVC_PATH%\vcvarsall.bat x64"
-        echo "PATH: %PATH%"
+        echo "MSCVC_PATH: $env:MSVC_PATH"
+        echo "PATH: $env:PATH"
+        . "$env:MSVC_PATH\vcvarsall.bat x64"
+        echo "PATH: $env:PATH"
         where cl.exe
     - name: Buildss
       shell: pwsh
