@@ -102,6 +102,17 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+    - name: MSVC Debug
+      shell: pwsh
+      env:
+        MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools"
+      run: |
+        echo "MSCVC_PATH: $env:MSVC_PATH"
+        echo "PATH: $env:PATH"
+        ls -al $env:MSVC_PATH
+        #. "$env:MSVC_PATH\vcvarsall.bat x64"
+        #echo "PATH: $env:PATH"
+        where cl.exes
     - uses: actions/checkout@v2
     - uses: conda-incubator/setup-miniconda@v2
       with:
@@ -120,17 +131,6 @@ jobs:
         conda info
         conda list
         echo $MSVC_PATH
-    - name: Build
-      shell: pwsh
-      env:
-        MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools"
-      run: |
-        echo "MSCVC_PATH: $env:MSVC_PATH"
-        echo "PATH: $env:PATH"
-        ls -al $env:MSVC_PATH
-        #. "$env:MSVC_PATH\vcvarsall.bat x64"
-        #echo "PATH: $env:PATH"
-        where cl.exes
     - name: Buildss
       shell: pwsh
       env:
