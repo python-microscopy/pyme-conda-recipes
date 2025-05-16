@@ -109,7 +109,7 @@ jobs:
       run: |
         echo "MSCVC_PATH: $env:MSVC_PATH"
         echo "PATH: $env:PATH"
-        ls -al $env:MSVC_PATH
+        ls $env:MSVC_PATH
         #. "$env:MSVC_PATH\vcvarsall.bat x64"
         #echo "PATH: $env:PATH"
         where cl.exes
