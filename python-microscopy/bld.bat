@@ -11,7 +11,7 @@ echo "### bld.bat ### - about to run vcvarsall.bat"
 echo %MSVC_PATH%
 echo %PATH%
 if defined MSVC_PATH (
-call "%MSVC_PATH%VsDevCmd.bat"
+call "%MSVC_PATH%\vcvars64.bat"
 ) else call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
 
 echo "### bld.bat ### - after running vcvarsall.bat"

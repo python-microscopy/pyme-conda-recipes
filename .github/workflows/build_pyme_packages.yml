@@ -103,14 +103,14 @@ jobs:
 
     steps:
     - name: MSVC Debug
-      shell: pwsh
+      shell: cmd
       env:
         MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build"
       run: |
-        echo "MSCVC_PATH: $env:MSVC_PATH"
-        echo "PATH: $env:PATH"
-        ls $env:MSVC_PATH
-        . $env:MSVC_PATH\vcvars64.bat
+        echo "MSCVC_PATH: %MSVC_PATH%"
+        echo "PATH: %PATH%"
+        dir %MSVC_PATH%
+        call "%MSVC_PATH%\vcvars64.bat"
         echo "PATH: $env:PATH"
         cl.exe
     - uses: actions/checkout@v2
