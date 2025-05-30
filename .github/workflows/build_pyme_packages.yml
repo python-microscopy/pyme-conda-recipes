@@ -47,12 +47,12 @@ jobs:
 
 
   osx:
-    if : false
+    #if : false
     strategy:
       matrix:
         os: [macos-latest] #windows-latest, macos-latest]
         python: ['3.8'] #,2.7] - # 2.7 disabled for now due to missing VC9
-        architecture: ['x86_64'] #, 'arm64']
+        architecture: ['arm64'] #['x86_64', 'arm64']
 
     runs-on: ${{ matrix.os }}
 
@@ -94,6 +94,7 @@ jobs:
 
 
   win:
+    if: false
     strategy:
       matrix:
         os: [windows-latest] #windows-latest, macos-latest]
@@ -150,4 +151,4 @@ jobs:
         #ls C:\Miniconda\Scripts\
         #ls C:\Miniconda\bin\
         #ls C:\Miniconda\envs\test\Scripts
-        C:\Miniconda3\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda\envs\test\conda-bld\win-64\*.condas
+        C:\Miniconda3\envs\test\Scripts\anaconda.exe -v --show-traceback upload -u david_baddeley --force C:\Miniconda3\envs\test\conda-bld\win-64\*.tar.bz2
