@@ -105,14 +105,14 @@ jobs:
     - name: MSVC Debug
       shell: pwsh
       env:
-        MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools"
+        MSVC_PATH: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build"
       run: |
         echo "MSCVC_PATH: $env:MSVC_PATH"
         echo "PATH: $env:PATH"
         ls $env:MSVC_PATH
-        . $env:MSVC_PATH\VsDevCmd.bat
+        . $env:MSVC_PATH\vcvars64.bat
         echo "PATH: $env:PATH"
-        where cl.exes
+        cl.exe
     - uses: actions/checkout@v2
     - uses: conda-incubator/setup-miniconda@v2
       with:
